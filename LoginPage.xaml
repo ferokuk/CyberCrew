@@ -1,0 +1,132 @@
+﻿<Page x:Class="CyberCrew.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:CyberCrew"
+      mc:Ignorable="d"
+      Title="LoginPage"
+      Height="1080"
+      Width="1920">
+    <Page.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2"
+                                   StrokeDashArray="1 2"
+                                   Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                                   SnapsToDevicePixels="true"
+                                   StrokeThickness="1" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Page.Resources>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush>
+                <GradientStop Color="#452701"
+                              Offset="0" />
+                <GradientStop Color="#26221f"
+                              Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="360*" />
+            <RowDefinition Height="360*" />
+            <RowDefinition Height="360*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="480*" />
+            <ColumnDefinition Width="480*" />
+            <ColumnDefinition Width="480*" />
+            <ColumnDefinition Width="480*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock HorizontalAlignment="Left"
+                   Margin="150,66,0,0"
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Top"
+                   Height="61"
+                   Width="183"
+                   Foreground="#FFFF8A00"
+                   FontSize="50"
+                   FontFamily="Days One"
+                   Text="Логин"
+                   Grid.Row="1" />
+        <TextBlock HorizontalAlignment="Center"
+                   Margin="0,236,0,0"
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Top"
+                   Height="61"
+                   Width="220"
+                   Foreground="#FFFF8A00"
+                   FontSize="50"
+                   FontFamily="Days One"
+                   Text="Пароль"
+                   Grid.Row="1" />
+        <PasswordBox Template="{DynamicResource PasswordBox}"
+                     Margin="0,215,0,40"
+                     VerticalContentAlignment="Center"
+                     Grid.Column="1"
+                     Grid.ColumnSpan="2"
+                     Grid.Row="1" />
+        <TextBox Template="{DynamicResource TextBox}"
+                 Margin="0,48,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Height="100"
+                 VerticalContentAlignment="Center"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2"
+                 Grid.Row="1" />
+        <Button Style="{DynamicResource MenuButton}"
+                Content="главная"
+                Margin="150,100,150,195"
+                FontSize="50"
+                BorderThickness="0"
+                VerticalContentAlignment="Center"
+                RenderTransformOrigin="0.45,0.407" />
+        <Button Style="{DynamicResource MenuButton}"
+                Content="услуги"
+                Margin="41,97,293,195"
+                FontSize="50"
+                BorderThickness="0"
+                VerticalContentAlignment="Center"
+                Grid.Column="1" />
+        <Button Style="{DynamicResource MenuButton}"
+                Content="о нас"
+                Margin="266,98,92,195"
+                FontSize="50"
+                BorderThickness="0"
+                VerticalContentAlignment="Center"
+                Grid.Column="2" />
+        <Button Style="{DynamicResource MenuButton}"
+                Content="личный кабинет"
+                HorizontalAlignment="Left"
+                Margin="52,97,0,195"
+                FontSize="50"
+                BorderThickness="0"
+                VerticalContentAlignment="Center"
+                Grid.Column="3"
+                Width="376" />
+        <Button Style="{DynamicResource ConfirmButton}"
+                FontSize="50"
+                Content="ВОЙТИ"
+                HorizontalAlignment="Center"
+                Margin="0,41,0,195"
+                VerticalContentAlignment="Center"
+                Width="322"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Grid.Row="2" />
+        <Image Margin="324,13,325,195"
+               Source="logo_bebriku2.png"
+               Stretch="Fill"
+               Grid.Column="1"
+               Grid.ColumnSpan="2" />
+
+    </Grid>
+</Page>
