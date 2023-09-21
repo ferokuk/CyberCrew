@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CyberCrew"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1080" Width="1920"
+        Title="MainWindow"
+        Width="{x:Static SystemParameters.PrimaryScreenWidth}"
+        Height="{x:Static SystemParameters.PrimaryScreenHeight}"
+        SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized" 
+        
         >
     <Grid>
         <Frame Content="You need to login to get access!" NavigationUIVisibility="Hidden" Name="FrmMain" Margin="0,10,0,-10"/>
