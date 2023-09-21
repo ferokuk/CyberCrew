@@ -26,7 +26,9 @@
     </Page.Resources>
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush>
+            <LinearGradientBrush 
+                StartPoint="0,1"
+                EndPoint="0,0">
                 <GradientStop Color="#452701"
                               Offset="0" />
                 <GradientStop Color="#26221f"
@@ -54,9 +56,9 @@
                    Grid.Row="2"
                    Grid.ColumnSpan="2"
                    TextWrapping="Wrap"
-                   VerticalAlignment="Center"
                    Height="60"
                    Width="182"
+                   VerticalAlignment="Center"
                    Foreground="#FFFF8A00"
                    FontSize="50"
                    FontFamily="Days One"
@@ -94,10 +96,11 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 FontSize="50"
+                FontFamily="Montserrat ExtraLight"
                 BorderThickness="0"
                 VerticalContentAlignment="Center"
                 Height="68"
-                Width="148" />
+                Width="182" />
         <Button Style="{DynamicResource MenuButton}"
                 Content="о нас"
                 Grid.Column="5"
@@ -105,6 +108,7 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 FontSize="50"
+                FontFamily="Montserrat ExtraLight"
                 BorderThickness="0"
                 VerticalContentAlignment="Center"
                 Height="68"
@@ -119,11 +123,25 @@
                 Grid.Column="2"
                 Grid.ColumnSpan="3"
                 Grid.Row="4"
-                Height="156"/>
+                Height="130"/>
         <Image Source="logo_bebriku2.png"
                Grid.Column="2"
                Grid.Row="0"
                Grid.ColumnSpan="3" />
-
+        <Button Style="{DynamicResource MenuButton}"
+                Content="У меня нет аккаунта"
+                Grid.Column="2"
+                Grid.Row="4"
+                Grid.ColumnSpan="3"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontSize="40"
+                FontFamily="Montserrat ExtraLight"
+                BorderThickness="0"
+                VerticalContentAlignment="Center"
+                Height="60"
+                Width="514"
+                Name="Registration"
+                Click="Registration_Click"/>
     </Grid>
 </Page>

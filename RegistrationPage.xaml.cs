@@ -16,18 +16,18 @@ using System.Windows.Shapes;
 namespace CyberCrew
 {
     /// <summary>
-    /// Логика взаимодействия для LoginPage.xaml
+    /// Логика взаимодействия для RegistrationPage.xaml
     /// </summary>
-    public partial class LoginPage : Page
+    public partial class RegistrationPage : Page
     {
-        public LoginPage()
+        public RegistrationPage()
         {
             InitializeComponent();
         }
 
-        private void Registration_Click(object sender, RoutedEventArgs e)
+        private void Login_Click(object sender, RoutedEventArgs e)
         {
-            AppFrame.frameMain.Navigate(new RegistrationPage());
+            AppFrame.frameMain.Navigate(new LoginPage());
         }
     }
 }

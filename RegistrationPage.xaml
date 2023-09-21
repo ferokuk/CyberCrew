@@ -1,0 +1,116 @@
+﻿<Page x:Class="CyberCrew.RegistrationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:CyberCrew"
+      mc:Ignorable="d"
+      Title="RegistrationPage"
+      Width="{x:Static SystemParameters.PrimaryScreenWidth}"
+      Height="{x:Static SystemParameters.PrimaryScreenHeight}">
+    <Page.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2"
+                                   StrokeDashArray="1 2"
+                                   Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                                   SnapsToDevicePixels="true"
+                                   StrokeThickness="1" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Page.Resources>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,1"
+                                 EndPoint="0,0">
+                <GradientStop Color="#452701"
+                              Offset="0" />
+                <GradientStop Color="#26221f"
+                              Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23*" />
+            <RowDefinition Height="9*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="9*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="9*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="9*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="8.5*" />
+            <RowDefinition Height="8.5*" />
+            <RowDefinition Height="20*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*" />
+            <ColumnDefinition Width="15*" />
+            <ColumnDefinition Width="10*" />
+            <ColumnDefinition Width="20*" />
+            <ColumnDefinition Width="10*" />
+            <ColumnDefinition Width="15*" />
+            <ColumnDefinition Width="15*" />
+        </Grid.ColumnDefinitions>
+        <Image Source="logo_bebriku2.png"
+               Grid.Column="2"
+               Grid.Row="0"
+               Grid.ColumnSpan="3" />
+        <TextBlock VerticalAlignment="Center"
+                   Foreground="#FFFF8A00"
+                   FontSize="50"
+                   FontFamily="Days One"
+                   Grid.Row="1"
+                   HorizontalAlignment="Center"
+                   Grid.Column="2"
+                   Grid.ColumnSpan="3"
+                   Text="Регистрация" />
+        <TextBox Template="{DynamicResource TextBox}"
+                 Grid.Row="1"
+                 Grid.Column="2"
+                 Grid.ColumnSpan="3"
+                 Text="Логин" />
+        <TextBox Template="{DynamicResource TextBox}"
+                 Grid.Row="3"
+                 Grid.Column="2"
+                 Grid.ColumnSpan="3"
+                 Text="Почта" />
+        <TextBox Template="{DynamicResource TextBox}"
+                 Grid.Row="5"
+                 Grid.Column="2"
+                 Grid.ColumnSpan="3"
+                 Text="Пароль" />
+        <TextBox Template="{DynamicResource TextBox}"
+                 Grid.Row="7"
+                 Grid.Column="2"
+                 Grid.ColumnSpan="3"
+                 Text="Повторите пароль" />
+        <Button Style="{DynamicResource ConfirmButton}"
+                Grid.Row="10"
+                Grid.Column="3"
+                Grid.ColumnSpan="1"
+                
+                Content="Регистрация"
+                FontSize="45" />
+        <Button Style="{DynamicResource MenuButton}"
+                Content="У меня есть аккаунт"
+                Grid.Column="2"
+                Grid.Row="11"
+                Grid.ColumnSpan="3"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                FontSize="40"
+                FontFamily="Montserrat ExtraLight"
+                BorderThickness="0"
+                VerticalContentAlignment="Center"
+                Height="60"
+                Width="514"
+                Name="Login"
+                Click="Login_Click" />
+    </Grid>
+</Page>
