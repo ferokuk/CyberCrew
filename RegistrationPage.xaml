@@ -25,6 +25,7 @@
 
     </Page.Resources>
     <Grid>
+
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,1"
                                  EndPoint="0,0">
@@ -101,28 +102,30 @@
                  Grid.Row="1"
                  Grid.Column="2"
                  Grid.ColumnSpan="3"
-                 Name="Login"/>
+                 Name="Login"
+                 TextChanged="Login_TextChanged" />
         <TextBox Template="{DynamicResource TextBox}"
                  Grid.Row="3"
                  Grid.Column="2"
                  Grid.ColumnSpan="3"
-                 Name="Email"/>
+                 Name="Email" />
         <PasswordBox Template="{DynamicResource PasswordBox}"
-                 Grid.Row="5"
-                 Grid.Column="2"
-                 Grid.ColumnSpan="3"
-                 Name="Password"/>
+                     Grid.Row="5"
+                     Grid.Column="2"
+                     Grid.ColumnSpan="3"
+                     Name="Password" />
         <PasswordBox Template="{DynamicResource PasswordBox}"
-                 Grid.Row="7"
-                 Grid.Column="2"
-                 Grid.ColumnSpan="3"
-                 Name="RepeatPassword"/>
+                     Grid.Row="7"
+                     Grid.Column="2"
+                     Grid.ColumnSpan="3"
+                     Name="RepeatPassword" />
         <Button Style="{DynamicResource ConfirmButton}"
                 Grid.Row="10"
-                Grid.Column="3"
-                Grid.ColumnSpan="1"
-                Content="Регистрация"
-                FontSize="45" />
+                Grid.Column="2"
+                Grid.ColumnSpan="3"
+                Content="Создать аккаунт"
+                FontSize="45"
+                Name="Register" />
         <Button Style="{DynamicResource MenuButton}"
                 Content="У меня есть аккаунт"
                 Grid.Column="2"
@@ -137,5 +140,18 @@
                 Height="60"
                 Width="514"
                 Click="Login_Click" />
+        <TextBlock Name="LoginMessage"
+                   FontFamily="Days One"
+                   Grid.Column="5"
+                   Grid.ColumnSpan="2"
+                   HorizontalAlignment="Left"
+                   Grid.Row="1"
+                   TextWrapping="Wrap"
+                   Text=""
+                   VerticalAlignment="Center"
+                   FontSize="30" />
+
+
+
     </Grid>
 </Page>

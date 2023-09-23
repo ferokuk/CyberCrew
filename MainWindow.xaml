@@ -1,19 +1,22 @@
-﻿<Window x:Class="CyberCrew.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CyberCrew"
-        mc:Ignorable="d"
-        Title="MainWindow"
-        Width="{x:Static SystemParameters.PrimaryScreenWidth}"
-        Height="{x:Static SystemParameters.PrimaryScreenHeight}"
-        SizeToContent="WidthAndHeight"
-        WindowStartupLocation="CenterScreen"
-        WindowState="Maximized" 
-        
-        >
+﻿<mah:MetroWindow x:Class="CyberCrew.MainWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:local="clr-namespace:CyberCrew"
+                 mc:Ignorable="d"
+                 Title="CyberCrew"
+                 Width="{x:Static SystemParameters.PrimaryScreenWidth}"
+                 Height="{x:Static SystemParameters.PrimaryScreenHeight}"
+                 WindowStyle="None"
+                 WindowState="Maximized"
+                 IgnoreTaskbarOnMaximize="True"
+                 ShowTitleBar="False"
+                 ResizeMode="NoResize"
+                 Background="White"
+                 WindowTransitionsEnabled="False">
     <Grid>
-        <Frame Content="You need to login to get access!" NavigationUIVisibility="Hidden" Name="FrmMain" Margin="0,10,0,-10"/>
+        <Frame Name="FrmMain" NavigationUIVisibility="Hidden"/>
     </Grid>
-</Window>
+</mah:MetroWindow>

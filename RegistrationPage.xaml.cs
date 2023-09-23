@@ -20,14 +20,31 @@ namespace CyberCrew
     /// </summary>
     public partial class RegistrationPage : Page
     {
+        HashSet<string> AllClients;
+        bool FormIsValid = true;
+
         public RegistrationPage()
         {
             InitializeComponent();
+            AllClients = DB.modelOdb.Client.Select(x => x.Nickname).ToHashSet();
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             AppFrame.frameMain.Navigate(new LoginPage());
+        }
+
+        private void Login_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+            if (AllClients.Contains(Login.Text.Trim()))
+           {
+                FormIsValid = false;
+                LoginMessage.Text = "❌ этот логин уже занят";
+                LoginMessage.Foreground = Brushes.Red;
+           }
+            Register.IsEnabled = FormIsValid;
+
         }
     }
 }
