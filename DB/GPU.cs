@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CyberCrew
+namespace CyberCrew.DB
 {
     using System;
     using System.Collections.Generic;

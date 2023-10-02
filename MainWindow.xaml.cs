@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,9 +26,23 @@ namespace CyberCrew
     {
         public static Frame frameMain;
     }
-    class DB
+    public static class Hash
     {
-        public static CyberCrewEntities modelOdb;
+        public static string HashPassword(string password)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+                byte[] hashBytes = sha256.ComputeHash(passwordBytes);
+
+                return Convert.ToBase64String(hashBytes);
+            }
+        }
+    }
+    
+    class DBConnection
+    {
+        public static DB.CyberCrewEntities modelOdb;
     }
     public partial class MainWindow
     {
@@ -35,7 +50,7 @@ namespace CyberCrew
         {
             InitializeComponent();
             AppFrame.frameMain = FrmMain;
-            DB.modelOdb = new CyberCrewEntities();
+            DBConnection.modelOdb = new DB.CyberCrewEntities();
             FrmMain.Navigate(new LoginPage());
             
         }

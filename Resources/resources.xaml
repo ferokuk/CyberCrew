@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf">
     <Style TargetType="Button" x:Key="RoundButton">
         <Style.Resources>
             <Style TargetType="Border">
@@ -16,9 +17,9 @@
     <SolidColorBrush x:Key="MenuButton.MouseOver.Foreground" Color="#c26900"/>
     <SolidColorBrush x:Key="MenuButton.MouseOver.BorderBrush" Color="#c26900" />
     <SolidColorBrush x:Key="Button.Pressed.Background" Color="Transparent"/>
-    <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+    <SolidColorBrush x:Key="Button.Pressed.Border" Color="Transparent"/>
     <SolidColorBrush x:Key="Button.Disabled.Background" Color="Transparent"/>
-    <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+    <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5" />
     <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
     <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#c26900"/>
     <SolidColorBrush x:Key="TextBox.BorderBrush" Color="#FFFF8A00"/>
@@ -67,6 +68,7 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="1"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
@@ -142,6 +144,7 @@
         <Setter Property="CaretBrush" Value="White"/>
         <Setter Property="FontSize" Value="30"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
+        
     </Style>
     <Style TargetType="{x:Type PasswordBox}">
         <Setter Property="FontFamily" Value="Days One" />

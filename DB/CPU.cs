@@ -7,26 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CyberCrew
+namespace CyberCrew.DB
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Manufacturer
+    public partial class CPU
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Manufacturer()
+        public CPU()
         {
-            this.CPU = new HashSet<CPU>();
-            this.GPU = new HashSet<GPU>();
+            this.Computer = new HashSet<Computer>();
         }
     
+        public int CPUId { get; set; }
         public int ManufacturerId { get; set; }
         public string Name { get; set; }
+        public short Cores { get; set; }
+        public int FrequencyMhz { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CPU> CPU { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GPU> GPU { get; set; }
+        public virtual ICollection<Computer> Computer { get; set; }
+        public virtual Manufacturer Manufacturer { get; set; }
     }
 }

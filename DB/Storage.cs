@@ -7,24 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CyberCrew
+namespace CyberCrew.DB
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Position
+    public partial class Storage
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Position()
+        public Storage()
         {
-            this.Employee = new HashSet<Employee>();
+            this.Computer = new HashSet<Computer>();
         }
     
-        public int PositionId { get; set; }
+        public int StorageId { get; set; }
         public string Name { get; set; }
-        public int Salary { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employee { get; set; }
+        public virtual ICollection<Computer> Computer { get; set; }
     }
 }

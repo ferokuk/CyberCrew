@@ -1,29 +1,16 @@
-﻿<Page x:Class="CyberCrew.RegistrationPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:CyberCrew"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+      x:Class="CyberCrew.RegistrationPage"
       mc:Ignorable="d"
       Title="RegistrationPage"
       Width="{x:Static SystemParameters.PrimaryScreenWidth}"
       Height="{x:Static SystemParameters.PrimaryScreenHeight}">
-    <Page.Resources>
-        <Style x:Key="FocusVisual">
-            <Setter Property="Control.Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Rectangle Margin="2"
-                                   StrokeDashArray="1 2"
-                                   Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
-                                   SnapsToDevicePixels="true"
-                                   StrokeThickness="1" />
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-    </Page.Resources>
+    
     <Grid>
 
         <Grid.Background>
@@ -58,7 +45,7 @@
             <ColumnDefinition Width="15*" />
             <ColumnDefinition Width="15*" />
         </Grid.ColumnDefinitions>
-        <Image Source="logo_bebriku2.png"
+        <Image Source="resources/big_logo.png"
                Grid.Column="2"
                Grid.Row="0"
                Grid.ColumnSpan="3" />
@@ -97,35 +84,40 @@
                    Foreground="#FFFF8A00"
                    FontSize="50"
                    FontFamily="Days One"
-                   Text="Повторите пароль" />
+                   Text="Пароль (повторно)" />
         <TextBox Template="{DynamicResource TextBox}"
                  Grid.Row="1"
                  Grid.Column="2"
                  Grid.ColumnSpan="3"
-                 Name="Login"
-                 TextChanged="Login_TextChanged" />
+                 x:Name="Login"
+                 TextChanged="Login_TextChanged" MaxLength="20"/>
         <TextBox Template="{DynamicResource TextBox}"
                  Grid.Row="3"
                  Grid.Column="2"
                  Grid.ColumnSpan="3"
-                 Name="Email" />
+                 x:Name="Email"
+                 TextChanged="Email_TextChanged" MaxLength="100"/>
         <PasswordBox Template="{DynamicResource PasswordBox}"
                      Grid.Row="5"
                      Grid.Column="2"
                      Grid.ColumnSpan="3"
-                     Name="Password" />
+                     x:Name="Password"
+                     PasswordChanged="Password_PasswordChanged" />
         <PasswordBox Template="{DynamicResource PasswordBox}"
                      Grid.Row="7"
                      Grid.Column="2"
                      Grid.ColumnSpan="3"
-                     Name="RepeatPassword" />
+                     x:Name="RepeatPassword"
+                     PasswordChanged="RepeatPassword_PasswordChanged" />
         <Button Style="{DynamicResource ConfirmButton}"
                 Grid.Row="10"
                 Grid.Column="2"
                 Grid.ColumnSpan="3"
                 Content="Создать аккаунт"
                 FontSize="45"
-                Name="Register" />
+                x:Name="Register"
+                IsEnabled="False"
+                Click="Register_Click" />
         <Button Style="{DynamicResource MenuButton}"
                 Content="У меня есть аккаунт"
                 Grid.Column="2"
@@ -140,7 +132,7 @@
                 Height="60"
                 Width="514"
                 Click="Login_Click" />
-        <TextBlock Name="LoginMessage"
+        <TextBlock x:Name="LoginMessage"
                    FontFamily="Days One"
                    Grid.Column="5"
                    Grid.ColumnSpan="2"
@@ -149,8 +141,37 @@
                    TextWrapping="Wrap"
                    Text=""
                    VerticalAlignment="Center"
+                   FontSize="25" />
+        <TextBlock x:Name="PasswordMessage"
+                   FontFamily="Days One"
+                   Grid.Column="5"
+                   Grid.ColumnSpan="2"
+                   HorizontalAlignment="Left"
+                   Grid.Row="7"
+                   TextWrapping="Wrap"
+                   Text=""
+                   VerticalAlignment="Center"
+                   FontSize="25" />
+        <TextBlock x:Name="EmailMessage"
+                   FontFamily="Days One"
+                   Grid.Column="5"
+                   Grid.ColumnSpan="2"
+                   HorizontalAlignment="Left"
+                   Grid.Row="3"
+                   TextWrapping="Wrap"
+                   Text=""
+                   VerticalAlignment="Center"
+                   FontSize="25" />
+        <TextBlock x:Name="RegisterMessage"
+                   FontFamily="Days One"
+                   Grid.Column="2"
+                   Grid.ColumnSpan="3"
+                   HorizontalAlignment="Left"
+                   Grid.Row="9"
+                   TextWrapping="Wrap"
+                   Text=""
+                   VerticalAlignment="Center"
                    FontSize="30" />
-
 
 
     </Grid>

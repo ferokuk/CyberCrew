@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,14 +22,66 @@ namespace CyberCrew
     /// </summary>
     public partial class LoginPage : Page
     {
+
         public LoginPage()
         {
             InitializeComponent();
+            LoginBtn.IsEnabled = false;
+            Login.Text = "";
+            Password.Password = "";
         }
 
         private void Registration_Click(object sender, RoutedEventArgs e)
         {
             AppFrame.frameMain.Navigate(new RegistrationPage());
+        }
+
+        private void Login_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var regex = new Regex("^[a-zA-Z]\\w*$");
+            if (!regex.IsMatch(Login.Text))
+            {
+                LoginBtn.IsEnabled = false;
+                LoginMessage.Text = "введите корректный логин";
+                LoginMessage.Foreground = Brushes.Red;
+                return;
+            }
+            else
+            {
+                LoginMessage.Text = ""; ;
+            }
+            LoginBtn.IsEnabled = Login.Text.Trim() != "" && Password.Password.Trim() != "";
+        }
+
+        private void Password_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            var regex = new Regex("^(?=.*[a-zA-Z])(?=.*[0-9])(?!.*\\s)[a-zA-Z0-9#$@!%&*?]{8,}$");
+            if (!regex.IsMatch(Password.Password))
+            {
+                LoginBtn.IsEnabled = false;
+                PasswordMessage.Text = "введите корректный пароль";
+                PasswordMessage.Foreground = Brushes.Red;
+                return;
+            }
+            else
+            {
+                PasswordMessage.Text = ""; ;
+            }
+            LoginBtn.IsEnabled = Login.Text.Trim() != "" && Password.Password.Trim() != "";
+        }
+
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var login = Login.Text;
+            var passw = Hash.HashPassword(Password.Password);
+            var user = DBConnection.modelOdb.Client.FirstOrDefault(x => x.Nickname == login && x.HashedPassword == passw);
+            if (user == null)
+            {
+                LoginInfo.Text = "Неправильный логин или пароль.";
+                LoginInfo.Foreground = Brushes.Red;
+                return;
+            }
+            AppFrame.frameMain.Navigate(new AppsPage(user));
         }
     }
 }
