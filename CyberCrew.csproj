@@ -14,6 +14,9 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,7 +38,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
@@ -50,8 +53,14 @@
     <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.2.4.10\lib\net47\MahApps.Metro.dll</HintPath>
     </Reference>
+    <Reference Include="MaterialDesignColors, Version=2.1.4.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.2.1.4\lib\net462\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=4.9.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.4.9.0\lib\net462\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -79,63 +88,71 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Client.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+    <Compile Include="AppsPage.xaml.cs">
+      <DependentUpon>AppsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Computer.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+    <Compile Include="ClientProfilePage.xaml.cs">
+      <DependentUpon>ClientProfilePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CPU.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DB.Context.cs">
+    <Compile Include="DB\CCDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DB.Context.tt</DependentUpon>
+      <DependentUpon>CCDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB.cs">
+    <Compile Include="DB\CCDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DB.tt</DependentUpon>
+      <DependentUpon>CCDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB.Designer.cs">
+    <Compile Include="DB\CCDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DB.edmx</DependentUpon>
+      <DependentUpon>CCDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Employee.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+    <Compile Include="DB\Client.cs">
+      <DependentUpon>CCDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="GPU.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+    <Compile Include="DB\Computer.cs">
+      <DependentUpon>CCDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Manufacturer.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+    <Compile Include="DB\CPU.cs">
+      <DependentUpon>CCDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Money.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+    <Compile Include="DB\Employee.cs">
+      <DependentUpon>CCDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Position.cs">
-      <DependentUpon>DB.tt</DependentUpon>
+    <Compile Include="DB\GPU.cs">
+      <DependentUpon>CCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Manufacturer.cs">
+      <DependentUpon>CCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Money.cs">
+      <DependentUpon>CCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Position.cs">
+      <DependentUpon>CCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Software.cs">
+      <DependentUpon>CCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Storage.cs">
+      <DependentUpon>CCDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\sysdiagrams.cs">
+      <DependentUpon>CCDB.tt</DependentUpon>
     </Compile>
     <Compile Include="RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Software.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Storage.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>DB.tt</DependentUpon>
-    </Compile>
+    <Page Include="AppsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClientProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -201,12 +218,12 @@
     <Resource Include="Fonts\Montserrat-SemiBoldItalic.ttf" />
     <Resource Include="Fonts\Montserrat-Thin.ttf" />
     <Resource Include="Fonts\Montserrat-ThinItalic.ttf" />
-    <EntityDeploy Include="DB.edmx">
+    <EntityDeploy Include="DB\CCDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DB.Designer.cs</LastGenOutput>
+      <LastGenOutput>CCDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DB.edmx.diagram">
-      <DependentUpon>DB.edmx</DependentUpon>
+    <None Include="DB\CCDB.edmx.diagram">
+      <DependentUpon>CCDB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -218,23 +235,33 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="logo_bebriku2.png" />
+    <Resource Include="Resources\big_logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DB.Context.tt">
+    <Resource Include="Resources\logo.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DB\CCDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DB.edmx</DependentUpon>
-      <LastGenOutput>DB.Context.cs</LastGenOutput>
+      <DependentUpon>CCDB.edmx</DependentUpon>
+      <LastGenOutput>CCDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DB.tt">
+    <Content Include="DB\CCDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DB.edmx</DependentUpon>
-      <LastGenOutput>DB.cs</LastGenOutput>
+      <DependentUpon>CCDB.edmx</DependentUpon>
+      <LastGenOutput>CCDB.cs</LastGenOutput>
     </Content>
-    <Resource Include="logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.4.9.0\build\MaterialDesignThemes.targets'))" />
+  </Target>
 </Project>

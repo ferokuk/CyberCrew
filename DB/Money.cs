@@ -7,17 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CyberCrew
+namespace CyberCrew.DB
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class Money
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public System.DateTime Date { get; set; }
+        public int Money1 { get; set; }
+        public int DayEmployeeId { get; set; }
+        public int NightEmployeeId { get; set; }
+    
+        public virtual Employee Employee { get; set; }
+        public virtual Employee Employee1 { get; set; }
     }
 }
