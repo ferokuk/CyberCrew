@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,20 +16,13 @@ using System.Windows.Shapes;
 namespace CyberCrew
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для LoginPage.xaml
     /// </summary>
-    class AppFrame
+    public partial class LoginPage : Page
     {
-        public static Frame frameMain;
-    }
-
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
+        public LoginPage()
         {
             InitializeComponent();
-            AppFrame.frameMain = FrmMain;
-            FrmMain.Navigate(new LoginPage());
         }
     }
 }

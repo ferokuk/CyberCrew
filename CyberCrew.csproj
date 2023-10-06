@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BFBAC55A-F196-4672-A973-92BC0D9C3624}</ProjectGuid>
+    <ProjectGuid>{0AE1AE07-3764-4D76-BC8B-0626355739DA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>CyberCrew</RootNamespace>
     <AssemblyName>CyberCrew</AssemblyName>
@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,10 +67,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Resources\resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -86,13 +97,27 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
+    <Resource Include="Fonts\DaysOne-Regular.ttf" />
+    <Resource Include="Fonts\Montserrat-Black.ttf" />
+    <Resource Include="Fonts\Montserrat-BlackItalic.ttf" />
+    <Resource Include="Fonts\Montserrat-Bold.ttf" />
+    <Resource Include="Fonts\Montserrat-BoldItalic.ttf" />
+    <Resource Include="Fonts\Montserrat-ExtraBold.ttf" />
+    <Resource Include="Fonts\Montserrat-ExtraBoldItalic.ttf" />
+    <Resource Include="Fonts\Montserrat-ExtraLight.ttf" />
+    <Resource Include="Fonts\Montserrat-ExtraLightItalic.ttf" />
+    <Resource Include="Fonts\Montserrat-Italic.ttf" />
+    <Resource Include="Fonts\Montserrat-Light.ttf" />
+    <Resource Include="Fonts\Montserrat-LightItalic.ttf" />
+    <Resource Include="Fonts\Montserrat-Medium.ttf" />
+    <Resource Include="Fonts\Montserrat-MediumItalic.ttf" />
+    <Resource Include="Fonts\Montserrat-Regular.ttf" />
+    <Resource Include="Fonts\Montserrat-SemiBold.ttf" />
+    <Resource Include="Fonts\Montserrat-SemiBoldItalic.ttf" />
+    <Resource Include="Fonts\Montserrat-Thin.ttf" />
+    <Resource Include="Fonts\Montserrat-ThinItalic.ttf" />
   <ItemGroup>
-    <None Include="App.config" />
+    <Resource Include="logo_bebriku2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
