@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -21,7 +21,7 @@ namespace CyberCrew
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    /// 
+
     class AppFrame
     {
         public static Frame frameMain;
