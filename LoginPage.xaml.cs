@@ -24,5 +24,10 @@ namespace CyberCrew
         {
             InitializeComponent();
         }
+
+        private void Registration_Click(object sender, RoutedEventArgs e)
+        {
+            AppFrame.frameMain.Navigate(new RegistrationPage());
+        }
     }
 }
