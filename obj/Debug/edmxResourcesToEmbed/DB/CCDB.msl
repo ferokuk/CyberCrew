@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище CyberCrewModelContainer" CdmEntityContainer="CyberCrewEntities">
+    <EntitySetMapping Name="Client">
+      <EntityTypeMapping TypeName="CyberCrewModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+          <ScalarProperty Name="HashedPassword" ColumnName="HashedPassword" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsEmailConfirmed" ColumnName="IsEmailConfirmed" />
+          <ScalarProperty Name="RegisteredAt" ColumnName="RegisteredAt" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Computer">
+      <EntityTypeMapping TypeName="CyberCrewModel.Computer">
+        <MappingFragment StoreEntitySet="Computer">
+          <ScalarProperty Name="ComputerId" ColumnName="ComputerId" />
+          <ScalarProperty Name="GPUId" ColumnName="GPUId" />
+          <ScalarProperty Name="CPUId" ColumnName="CPUId" />
+          <ScalarProperty Name="RAMGB" ColumnName="RAMGB" />
+          <ScalarProperty Name="StorageId" ColumnName="StorageId" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CPU">
+      <EntityTypeMapping TypeName="CyberCrewModel.CPU">
+        <MappingFragment StoreEntitySet="CPU">
+          <ScalarProperty Name="CPUId" ColumnName="CPUId" />
+          <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Cores" ColumnName="Cores" />
+          <ScalarProperty Name="FrequencyMhz" ColumnName="FrequencyMhz" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employee">
+      <EntityTypeMapping TypeName="CyberCrewModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+          <ScalarProperty Name="IsWorking" ColumnName="IsWorking" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="EmploymentDate" ColumnName="EmploymentDate" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="INN" ColumnName="INN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GPU">
+      <EntityTypeMapping TypeName="CyberCrewModel.GPU">
+        <MappingFragment StoreEntitySet="GPU">
+          <ScalarProperty Name="GPUId" ColumnName="GPUId" />
+          <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MemoryMB" ColumnName="MemoryMB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Manufacturer">
+      <EntityTypeMapping TypeName="CyberCrewModel.Manufacturer">
+        <MappingFragment StoreEntitySet="Manufacturer">
+          <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Money">
+      <EntityTypeMapping TypeName="CyberCrewModel.Money">
+        <MappingFragment StoreEntitySet="Money">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Money1" ColumnName="Money" />
+          <ScalarProperty Name="DayEmployeeId" ColumnName="DayEmployeeId" />
+          <ScalarProperty Name="NightEmployeeId" ColumnName="NightEmployeeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Position">
+      <EntityTypeMapping TypeName="CyberCrewModel.Position">
+        <MappingFragment StoreEntitySet="Position">
+          <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Software">
+      <EntityTypeMapping TypeName="CyberCrewModel.Software">
+        <MappingFragment StoreEntitySet="Software">
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="PathToExe" ColumnName="PathToExe" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Storage">
+      <EntityTypeMapping TypeName="CyberCrewModel.Storage">
+        <MappingFragment StoreEntitySet="Storage">
+          <ScalarProperty Name="StorageId" ColumnName="StorageId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CyberCrewModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

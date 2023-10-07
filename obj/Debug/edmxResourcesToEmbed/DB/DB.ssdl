@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище CyberCrewModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ClientId" />
+      <PropertyRef Name="Nickname" />
+    </Key>
+    <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nickname" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="HashedPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsEmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="RegisteredAt" Type="datetime" Nullable="false" />
+    <Property Name="Balance" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Computer">
+    <Key>
+      <PropertyRef Name="ComputerId" />
+    </Key>
+    <Property Name="ComputerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GPUId" Type="int" Nullable="false" />
+    <Property Name="CPUId" Type="int" Nullable="false" />
+    <Property Name="RAMGB" Type="smallint" Nullable="false" />
+    <Property Name="StorageId" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="CPU">
+    <Key>
+      <PropertyRef Name="CPUId" />
+    </Key>
+    <Property Name="CPUId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ManufacturerId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Cores" Type="smallint" Nullable="false" />
+    <Property Name="FrequencyMhz" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsWorking" Type="bit" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="EmploymentDate" Type="date" Nullable="false" />
+    <Property Name="DateOfBirth" Type="date" Nullable="false" />
+    <Property Name="PositionId" Type="int" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="150" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="18" Nullable="false" />
+    <Property Name="INN" Type="varchar" MaxLength="12" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GPU">
+    <Key>
+      <PropertyRef Name="GPUId" />
+    </Key>
+    <Property Name="GPUId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ManufacturerId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MemoryMB" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Manufacturer">
+    <Key>
+      <PropertyRef Name="ManufacturerId" />
+    </Key>
+    <Property Name="ManufacturerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Money">
+    <Key>
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="Money" Type="int" Nullable="false" />
+    <Property Name="DayEmployeeId" Type="int" Nullable="false" />
+    <Property Name="NightEmployeeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="PositionId" />
+    </Key>
+    <Property Name="PositionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Salary" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Software">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+    </Key>
+    <Property Name="ApplicationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplicationName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Icon" Type="varbinary(max)" />
+    <Property Name="PathToExe" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="Storage">
+    <Key>
+      <PropertyRef Name="StorageId" />
+    </Key>
+    <Property Name="StorageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Computer_CPU">
+    <End Role="CPU" Type="Self.CPU" Multiplicity="1" />
+    <End Role="Computer" Type="Self.Computer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CPU">
+        <PropertyRef Name="CPUId" />
+      </Principal>
+      <Dependent Role="Computer">
+        <PropertyRef Name="CPUId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Computer_GPU">
+    <End Role="GPU" Type="Self.GPU" Multiplicity="1" />
+    <End Role="Computer" Type="Self.Computer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GPU">
+        <PropertyRef Name="GPUId" />
+      </Principal>
+      <Dependent Role="Computer">
+        <PropertyRef Name="GPUId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Computer_Storage">
+    <End Role="Storage" Type="Self.Storage" Multiplicity="1" />
+    <End Role="Computer" Type="Self.Computer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Storage">
+        <PropertyRef Name="StorageId" />
+      </Principal>
+      <Dependent Role="Computer">
+        <PropertyRef Name="StorageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CPU_Manufacturer">
+    <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
+    <End Role="CPU" Type="Self.CPU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="ManufacturerId" />
+      </Principal>
+      <Dependent Role="CPU">
+        <PropertyRef Name="ManufacturerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Position">
+    <End Role="Position" Type="Self.Position" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="PositionId" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="PositionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GPU_Manufacturer">
+    <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
+    <End Role="GPU" Type="Self.GPU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="ManufacturerId" />
+      </Principal>
+      <Dependent Role="GPU">
+        <PropertyRef Name="ManufacturerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Money_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Money" Type="Self.Money" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="Money">
+        <PropertyRef Name="DayEmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Money_Employee1">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Money" Type="Self.Money" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="Money">
+        <PropertyRef Name="NightEmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="Хранилище CyberCrewModelContainer">
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Computer" EntityType="Self.Computer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CPU" EntityType="Self.CPU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GPU" EntityType="Self.GPU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Money" EntityType="Self.Money" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Software" EntityType="Self.Software" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Storage" EntityType="Self.Storage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Computer_CPU" Association="Self.FK_Computer_CPU">
+      <End Role="CPU" EntitySet="CPU" />
+      <End Role="Computer" EntitySet="Computer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Computer_GPU" Association="Self.FK_Computer_GPU">
+      <End Role="GPU" EntitySet="GPU" />
+      <End Role="Computer" EntitySet="Computer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Computer_Storage" Association="Self.FK_Computer_Storage">
+      <End Role="Storage" EntitySet="Storage" />
+      <End Role="Computer" EntitySet="Computer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CPU_Manufacturer" Association="Self.FK_CPU_Manufacturer">
+      <End Role="Manufacturer" EntitySet="Manufacturer" />
+      <End Role="CPU" EntitySet="CPU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Position" Association="Self.FK_Employee_Position">
+      <End Role="Position" EntitySet="Position" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GPU_Manufacturer" Association="Self.FK_GPU_Manufacturer">
+      <End Role="Manufacturer" EntitySet="Manufacturer" />
+      <End Role="GPU" EntitySet="GPU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Money_Employee" Association="Self.FK_Money_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Money" EntitySet="Money" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Money_Employee1" Association="Self.FK_Money_Employee1">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Money" EntitySet="Money" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

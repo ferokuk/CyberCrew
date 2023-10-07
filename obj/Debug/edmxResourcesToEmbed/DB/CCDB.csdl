@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CyberCrewModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ClientId" />
+      <PropertyRef Name="Nickname" />
+    </Key>
+    <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nickname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HashedPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsEmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="RegisteredAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Computer">
+    <Key>
+      <PropertyRef Name="ComputerId" />
+    </Key>
+    <Property Name="ComputerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GPUId" Type="Int32" Nullable="false" />
+    <Property Name="CPUId" Type="Int32" Nullable="false" />
+    <Property Name="RAMGB" Type="Int16" Nullable="false" />
+    <Property Name="StorageId" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CPU" Relationship="Self.FK_Computer_CPU" FromRole="Computer" ToRole="CPU" />
+    <NavigationProperty Name="GPU" Relationship="Self.FK_Computer_GPU" FromRole="Computer" ToRole="GPU" />
+    <NavigationProperty Name="Storage" Relationship="Self.FK_Computer_Storage" FromRole="Computer" ToRole="Storage" />
+  </EntityType>
+  <EntityType Name="CPU">
+    <Key>
+      <PropertyRef Name="CPUId" />
+    </Key>
+    <Property Name="CPUId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ManufacturerId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cores" Type="Int16" Nullable="false" />
+    <Property Name="FrequencyMhz" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Computer" Relationship="Self.FK_Computer_CPU" FromRole="CPU" ToRole="Computer" />
+    <NavigationProperty Name="Manufacturer" Relationship="Self.FK_CPU_Manufacturer" FromRole="CPU" ToRole="Manufacturer" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsWorking" Type="Boolean" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmploymentDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PositionId" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="INN" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Position" Relationship="Self.FK_Employee_Position" FromRole="Employee" ToRole="Position" />
+    <NavigationProperty Name="Money" Relationship="Self.FK_Money_Employee" FromRole="Employee" ToRole="Money" />
+    <NavigationProperty Name="Money1" Relationship="Self.FK_Money_Employee1" FromRole="Employee" ToRole="Money" />
+  </EntityType>
+  <EntityType Name="GPU">
+    <Key>
+      <PropertyRef Name="GPUId" />
+    </Key>
+    <Property Name="GPUId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ManufacturerId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MemoryMB" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Computer" Relationship="Self.FK_Computer_GPU" FromRole="GPU" ToRole="Computer" />
+    <NavigationProperty Name="Manufacturer" Relationship="Self.FK_GPU_Manufacturer" FromRole="GPU" ToRole="Manufacturer" />
+  </EntityType>
+  <EntityType Name="Manufacturer">
+    <Key>
+      <PropertyRef Name="ManufacturerId" />
+    </Key>
+    <Property Name="ManufacturerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CPU" Relationship="Self.FK_CPU_Manufacturer" FromRole="Manufacturer" ToRole="CPU" />
+    <NavigationProperty Name="GPU" Relationship="Self.FK_GPU_Manufacturer" FromRole="Manufacturer" ToRole="GPU" />
+  </EntityType>
+  <EntityType Name="Money">
+    <Key>
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Money1" Type="Int32" Nullable="false" />
+    <Property Name="DayEmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="NightEmployeeId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Money_Employee" FromRole="Money" ToRole="Employee" />
+    <NavigationProperty Name="Employee1" Relationship="Self.FK_Money_Employee1" FromRole="Money" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="PositionId" />
+    </Key>
+    <Property Name="PositionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Salary" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Position" FromRole="Position" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Software">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+    </Key>
+    <Property Name="ApplicationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Icon" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PathToExe" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Storage">
+    <Key>
+      <PropertyRef Name="StorageId" />
+    </Key>
+    <Property Name="StorageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Computer" Relationship="Self.FK_Computer_Storage" FromRole="Storage" ToRole="Computer" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Computer_CPU">
+    <End Role="CPU" Type="Self.CPU" Multiplicity="1" />
+    <End Role="Computer" Type="Self.Computer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CPU">
+        <PropertyRef Name="CPUId" />
+      </Principal>
+      <Dependent Role="Computer">
+        <PropertyRef Name="CPUId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Computer_GPU">
+    <End Role="GPU" Type="Self.GPU" Multiplicity="1" />
+    <End Role="Computer" Type="Self.Computer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GPU">
+        <PropertyRef Name="GPUId" />
+      </Principal>
+      <Dependent Role="Computer">
+        <PropertyRef Name="GPUId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Computer_Storage">
+    <End Role="Storage" Type="Self.Storage" Multiplicity="1" />
+    <End Role="Computer" Type="Self.Computer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Storage">
+        <PropertyRef Name="StorageId" />
+      </Principal>
+      <Dependent Role="Computer">
+        <PropertyRef Name="StorageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CPU_Manufacturer">
+    <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
+    <End Role="CPU" Type="Self.CPU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="ManufacturerId" />
+      </Principal>
+      <Dependent Role="CPU">
+        <PropertyRef Name="ManufacturerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Position">
+    <End Role="Position" Type="Self.Position" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="PositionId" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="PositionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Money_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Money" Type="Self.Money" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="Money">
+        <PropertyRef Name="DayEmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Money_Employee1">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Money" Type="Self.Money" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="EmployeeId" />
+      </Principal>
+      <Dependent Role="Money">
+        <PropertyRef Name="NightEmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GPU_Manufacturer">
+    <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
+    <End Role="GPU" Type="Self.GPU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="ManufacturerId" />
+      </Principal>
+      <Dependent Role="GPU">
+        <PropertyRef Name="ManufacturerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CyberCrewEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Client" EntityType="Self.Client" />
+    <EntitySet Name="Computer" EntityType="Self.Computer" />
+    <EntitySet Name="CPU" EntityType="Self.CPU" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" />
+    <EntitySet Name="GPU" EntityType="Self.GPU" />
+    <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" />
+    <EntitySet Name="Money" EntityType="Self.Money" />
+    <EntitySet Name="Position" EntityType="Self.Position" />
+    <EntitySet Name="Software" EntityType="Self.Software" />
+    <EntitySet Name="Storage" EntityType="Self.Storage" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_Computer_CPU" Association="Self.FK_Computer_CPU">
+      <End Role="CPU" EntitySet="CPU" />
+      <End Role="Computer" EntitySet="Computer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Computer_GPU" Association="Self.FK_Computer_GPU">
+      <End Role="GPU" EntitySet="GPU" />
+      <End Role="Computer" EntitySet="Computer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Computer_Storage" Association="Self.FK_Computer_Storage">
+      <End Role="Storage" EntitySet="Storage" />
+      <End Role="Computer" EntitySet="Computer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CPU_Manufacturer" Association="Self.FK_CPU_Manufacturer">
+      <End Role="Manufacturer" EntitySet="Manufacturer" />
+      <End Role="CPU" EntitySet="CPU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Position" Association="Self.FK_Employee_Position">
+      <End Role="Position" EntitySet="Position" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Money_Employee" Association="Self.FK_Money_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Money" EntitySet="Money" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Money_Employee1" Association="Self.FK_Money_Employee1">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Money" EntitySet="Money" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GPU_Manufacturer" Association="Self.FK_GPU_Manufacturer">
+      <End Role="Manufacturer" EntitySet="Manufacturer" />
+      <End Role="GPU" EntitySet="GPU" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

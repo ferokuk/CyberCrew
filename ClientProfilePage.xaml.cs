@@ -32,7 +32,7 @@ namespace CyberCrew
 
         private void Apps_Click(object sender, RoutedEventArgs e)
         {
-            AppFrame.frameMain.Navigate(new AppsPage(user));
+            AppFrame.frameMain.Navigate(new ClientAppsPage(user));
         }
     }
 }

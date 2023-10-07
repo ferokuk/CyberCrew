@@ -27,8 +27,8 @@ namespace CyberCrew
         {
             InitializeComponent();
             LoginBtn.IsEnabled = false;
-            Login.Text = "";
-            Password.Password = "";
+            Login.Text = "ferokuk";
+            Password.Password = "lolo2004";
         }
 
         private void Registration_Click(object sender, RoutedEventArgs e)
@@ -81,7 +81,7 @@ namespace CyberCrew
                 LoginInfo.Foreground = Brushes.Red;
                 return;
             }
-            AppFrame.frameMain.Navigate(new AppsPage(user));
+            AppFrame.frameMain.Navigate(new ClientPage(user));
         }
     }
 }

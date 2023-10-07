@@ -88,8 +88,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AppsPage.xaml.cs">
-      <DependentUpon>AppsPage.xaml</DependentUpon>
+    <Compile Include="ClientAppsPage.xaml.cs">
+      <DependentUpon>ClientAppsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClientPage.xaml.cs">
+      <DependentUpon>ClientPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ClientProfilePage.xaml.cs">
       <DependentUpon>ClientProfilePage.xaml</DependentUpon>
@@ -145,7 +148,11 @@
     <Compile Include="RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="AppsPage.xaml">
+    <Page Include="ClientAppsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
