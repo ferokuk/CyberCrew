@@ -22,7 +22,12 @@ namespace CyberCrew
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
+<<<<<<< Updated upstream
 
+=======
+    /// 
+    
+>>>>>>> Stashed changes
     class AppFrame
     {
         public static Frame frameMain;
