@@ -1,7 +1,10 @@
 ﻿using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -26,9 +29,12 @@ namespace CyberCrew
         public LoginPage()
         {
             InitializeComponent();
+            string jsonFilePath = "../../Resources/config.json"; // Укажите путь к вашему JSON файлу
+            string jsonContent = File.ReadAllText(jsonFilePath);
+            var config = JsonConvert.DeserializeObject<Config>(jsonContent);
             LoginBtn.IsEnabled = false;
-            Login.Text = "ferokuk";
-            Password.Password = "lolo2004";
+            Login.Text = config.Login;
+            Password.Password = config.Password;
         }
 
         private void Registration_Click(object sender, RoutedEventArgs e)

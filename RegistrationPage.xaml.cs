@@ -174,7 +174,7 @@ namespace CyberCrew
                 AppFrame.frameMain.Navigate(new LoginPage());
 
             }
-            catch (Exception ex)
+            catch 
             {
                 RegisterMessage.Text = badEmoji + "произошла ошибка.\nПовторите попвытку позже.";
                 RegisterMessage.Foreground = Brushes.Red;

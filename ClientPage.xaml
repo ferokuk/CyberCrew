@@ -43,7 +43,7 @@
                    Name="Nickname"
                    FontSize="50"
                    HorizontalAlignment="Center"
-                   Text="ferokuk"
+                   Text="{Binding Nickname}"
                    TextWrapping="NoWrap"
                    Grid.Column="0"
                    Grid.Row="1"
@@ -53,7 +53,7 @@
                    Name="Balance"
                    FontSize="30"
                    HorizontalAlignment="Center"
-                   Text="1249.46₽"
+                   Text="1248,5₽"
                    TextWrapping="NoWrap"
                    Grid.Column="0"
                    Grid.Row="1"
@@ -108,6 +108,6 @@
             FontFamily="Days One"
             FontSize="40"
             Name="CurrentTime"/>
-        <Frame Name="PageContent" Grid.Column="1" Grid.RowSpan="7"/>
+        <Frame Name="CurrentPageContent" Grid.Column="1" Grid.RowSpan="7"/>
     </Grid>
 </Page>

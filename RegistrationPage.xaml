@@ -10,7 +10,7 @@
       Title="RegistrationPage"
       Width="{x:Static SystemParameters.PrimaryScreenWidth}"
       Height="{x:Static SystemParameters.PrimaryScreenHeight}">
-    
+
     <Grid>
 
         <Grid.Background>
@@ -90,13 +90,15 @@
                  Grid.Column="2"
                  Grid.ColumnSpan="3"
                  x:Name="Login"
-                 TextChanged="Login_TextChanged" MaxLength="20"/>
+                 TextChanged="Login_TextChanged"
+                 MaxLength="20" />
         <TextBox Template="{DynamicResource TextBox}"
                  Grid.Row="3"
                  Grid.Column="2"
                  Grid.ColumnSpan="3"
                  x:Name="Email"
-                 TextChanged="Email_TextChanged" MaxLength="100"/>
+                 TextChanged="Email_TextChanged"
+                 MaxLength="100" />
         <PasswordBox Template="{DynamicResource PasswordBox}"
                      Grid.Row="5"
                      Grid.Column="2"

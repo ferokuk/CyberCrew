@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -16,18 +17,14 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro;
 using MahApps.Metro.Controls;
+using Newtonsoft.Json;
 
 namespace CyberCrew
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-<<<<<<< Updated upstream
 
-=======
-    /// 
-    
->>>>>>> Stashed changes
     class AppFrame
     {
         public static Frame frameMain;
@@ -50,13 +47,28 @@ namespace CyberCrew
     {
         public static DB.CyberCrewEntities modelOdb;
     }
+
+    public class Config
+    {
+
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+        public string EmailPassword { get; set; }
+        public string SmtpAddress { get; set; }
+        public int SmtpPortNumber { get; set; }
+        public string OrganizationName { get; set; }
+        
+    }
     public partial class MainWindow
     {
+        
         public MainWindow()
         {
             InitializeComponent();
             AppFrame.frameMain = FrmMain;
             DBConnection.modelOdb = new DB.CyberCrewEntities();
+            
             FrmMain.Navigate(new LoginPage());
             
         }

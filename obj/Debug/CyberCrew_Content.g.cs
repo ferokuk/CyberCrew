@@ -10,5 +10,6 @@
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("db/ccdb.context.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("db/ccdb.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/message_form.html")]
 
 

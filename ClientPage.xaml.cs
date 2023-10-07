@@ -28,6 +28,7 @@ namespace CyberCrew
         public ClientPage(DB.Client user)
         {
             InitializeComponent();
+            this.DataContext = user;
             this.User = user;
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += new EventHandler(UpdateTimer_Tick);
@@ -38,10 +39,10 @@ namespace CyberCrew
             balance.Tick += new EventHandler(UpdateBalance_Tick);
             balance.Interval = new TimeSpan(0, 1, 0);
             balance.Start();
-            Nickname.Text = user.Nickname;
+            
             Balance.Text = user.Balance.ToString() + "₽";
             currBtn = AppsBtn;
-            PageContent.Navigate(new ClientAppsPage(user));
+            CurrentPageContent.Navigate(new ClientAppsPage(user));
            
         }
         private void UpdateTimer_Tick(object sender, EventArgs e)
@@ -67,8 +68,7 @@ namespace CyberCrew
             Profile.Background = (Brush)new BrushConverter().ConvertFrom("#FFFF8A00");
             currBtn.Background = Brushes.Transparent;
             currBtn = Profile;
-            PageContent.Navigate(new ClientProfilePage(User));
-            //AppFrame.frameMain.Navigate(new ClientProfilePage(User));
+            CurrentPageContent.Navigate(new ClientProfilePage(User));
         }
 
         private void AppsBtn_Click(object sender, RoutedEventArgs e)
@@ -77,7 +77,7 @@ namespace CyberCrew
             AppsBtn.Background = (Brush)new BrushConverter().ConvertFrom("#FFFF8A00");
             currBtn.Background = Brushes.Transparent;
             currBtn = AppsBtn;
-            PageContent.Navigate(new ClientAppsPage(User));
+            CurrentPageContent.Navigate(new ClientAppsPage(User));
         }
     }
 }

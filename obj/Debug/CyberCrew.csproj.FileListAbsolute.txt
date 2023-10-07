@@ -87,3 +87,5 @@ A:\Clones\CyberCrew\CyberCrew\obj\Debug\ClientAppsPage.g.cs
 A:\Clones\CyberCrew\CyberCrew\obj\Debug\ClientAppsPage.baml
 A:\Clones\CyberCrew\CyberCrew\obj\Debug\ClientPage.baml
 A:\Clones\CyberCrew\CyberCrew\obj\Debug\GeneratedInternalTypeHelper.g.cs
+A:\Clones\CyberCrew\CyberCrew\bin\Debug\Newtonsoft.Json.dll
+A:\Clones\CyberCrew\CyberCrew\bin\Debug\Newtonsoft.Json.xml

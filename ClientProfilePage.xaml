@@ -23,20 +23,107 @@
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="5*" />
-            <RowDefinition Height="15*" />
             <RowDefinition Height="10*" />
             <RowDefinition Height="10*" />
             <RowDefinition Height="10*" />
             <RowDefinition Height="10*" />
-            <RowDefinition Height="40*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="45*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*" />
             <ColumnDefinition Width="30*" />
-            <ColumnDefinition Width="90*" />
+            <ColumnDefinition Width="15*" />
+            <ColumnDefinition Width="20*" />
+            <ColumnDefinition Width="30*" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="{Binding user.Nickname}" Grid.Column="1"
-                   HorizontalAlignment="Center" Grid.Row="3" FontSize="50"/>
-
+        <TextBlock Text="{Binding Nickname}"
+                   Grid.Column="1"
+                   HorizontalAlignment="Left"
+                   Grid.Row="1"
+                   FontSize="50"
+                   Foreground="#FFFF8A00"
+                   FontFamily="Days One"
+                   TextWrapping="NoWrap" />
+        <TextBlock Text="-"
+                   Grid.Column="1"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Grid.Row="2"
+                   FontSize="30"
+                   Foreground="#FFFF8A00"
+                   FontFamily="Montserrat ExtraLight"
+                   Name="RegistrationDate"
+                   TextWrapping="NoWrap" />
+        <TextBlock Text="{Binding Email}"
+                   Grid.Column="1"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Grid.Row="3"
+                   FontSize="30"
+                   Foreground="#FFFF8A00"
+                   FontFamily="Montserrat ExtraLight"
+                   Name="Email"
+                   TextWrapping="NoWrap" />
+        <TextBlock Text="confirmed"
+                   Grid.Column="2"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Grid.Row="3"
+                   FontSize="30"
+                   Foreground="#FFFF8A00"
+                   FontFamily="Montserrat ExtraLight"
+                   Name="IsEmailConfirmed"
+                   TextWrapping="NoWrap" />
+        <Button Style="{DynamicResource MenuButton}"
+                Content="Сменить пароль"
+                Grid.Row="4"
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                FontSize="30" />
+        <Button Style="{DynamicResource MenuButton}"
+                Content="Подтвердить почту"
+                Grid.Row="5"
+                Grid.Column="1"
+                FontSize="30"
+                HorizontalAlignment="Left"
+                Name="ConfirmEmail"
+                Click="ConfirmEmail_Click" />
+        <TextBlock Text="Введите код"
+                   Grid.Row="4"
+                   Grid.Column="2"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"
+                   Foreground="#FFFF8A00"
+                   FontFamily="Montserrat ExtraLight"
+                   FontSize="25"
+                   Visibility="Hidden"
+                   Name="CodeMessage" />
+        <TextBox Template="{DynamicResource TextBox}"
+                 Grid.Row="5"
+                 Grid.Column="2"
+                 Name="Code"
+                 Visibility="Hidden"
+                 TextChanged="Code_TextChanged" />
+        <TextBlock  Grid.Row="4"
+                    Grid.Column="3" 
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center"
+                    Name="CodeEnterInfo"
+                    FontFamily="Days One"
+                    FontSize="30"/>
+        <Button Style="{DynamicResource ConfirmButton}"
+                Grid.Row="5"
+                Grid.Column="3"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Content="Отправить"
+                Width="200"
+                Height="50"
+                FontSize="30"
+                Name="ConfirmCode"
+                Visibility="Hidden"
+                Click="ConfirmCode_Click" />
     </Grid>
 </Page>
