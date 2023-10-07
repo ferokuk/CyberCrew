@@ -27,8 +27,8 @@ namespace CyberCrew
         {
             InitializeComponent();
             LoginBtn.IsEnabled = false;
-            Login.Text = "ferokuk";
-            Password.Password = "lolo2004";
+            Login.Text = "";
+            Password.Password = "";
         }
 
         private void Registration_Click(object sender, RoutedEventArgs e)
