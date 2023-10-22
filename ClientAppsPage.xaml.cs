@@ -59,7 +59,9 @@ namespace CyberCrew
         {
             InitializeComponent();
             AppsManager.User = User;
-            Apps.ItemsSource = DBConnection.modelOdb.Software.ToList();
+            var apps = DBConnection.modelOdb.Software.ToList();
+            DataContext = apps;
+            Apps.ItemsSource = apps;
             this.User = User;
         }
 

@@ -26,12 +26,6 @@ namespace CyberCrew
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-<<<<<<< Updated upstream
-
-=======
-    /// 
-    
->>>>>>> Stashed changes
     class AppFrame
     {
         public static Frame frameMain;
@@ -66,8 +60,7 @@ namespace CyberCrew
     {
         public static DB.CyberCrewEntities modelOdb;
     }
-    public partial class MainWindow
-    {
+
 
     public class Config
     {
@@ -96,14 +89,14 @@ namespace CyberCrew
                     try
                     {
                         process.Kill();
-                       
+
                     }
                     catch
                     {
                         MessageBox.Show($"error killing {app}-{process}");
                     }
                 }
-                
+
             }
             runningApps.Clear();
         }
@@ -169,7 +162,7 @@ namespace CyberCrew
             AppsManager.timer.Tick += new EventHandler(AppsManager.ReduceUserBalance_Tick);
             AppsManager.timer.Interval = new TimeSpan(0, 0, 1);
 
-            LanguageProperty.OverrideMetadata(typeof(FrameworkElement),new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
+            LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
             FrmMain.Navigate(new LoginPage());
 
         }
@@ -184,3 +177,5 @@ namespace CyberCrew
         }
     }
 }
+
+

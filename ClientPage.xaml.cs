@@ -68,9 +68,6 @@ namespace CyberCrew
             if(currBtn == ProfileBtn) { return; }
             ProfileBtn.Background = (Brush)new BrushConverter().ConvertFrom("#FFFF8A00");
             currBtn.Background = Brushes.Transparent;
-            currBtn = Profile;
-            PageContent.Navigate(new ClientProfilePage(User));
-            //AppFrame.frameMain.Navigate(new ClientProfilePage(User));
             currBtn = ProfileBtn;
             CurrentPageContent.Navigate(new ClientProfilePage(User));
         }
@@ -81,7 +78,7 @@ namespace CyberCrew
             AppsBtn.Background = (Brush)new BrushConverter().ConvertFrom("#FFFF8A00");
             currBtn.Background = Brushes.Transparent;
             currBtn = AppsBtn;
-            PageContent.Navigate(new ClientAppsPage(User));
+            CurrentPageContent.Navigate(new ClientAppsPage(User));
         }
 
         private void BarBtn_Click(object sender, RoutedEventArgs e)

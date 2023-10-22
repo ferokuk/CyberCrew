@@ -24,23 +24,20 @@
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="5*" />
-            <RowDefinition Height="15*" />
             <RowDefinition Height="10*" />
             <RowDefinition Height="10*" />
             <RowDefinition Height="10*" />
             <RowDefinition Height="10*" />
-            <RowDefinition Height="40*" />
             <RowDefinition Height="10*" />
-            <RowDefinition Height="10*" />
-            <RowDefinition Height="35*" />
+            <RowDefinition Height="45*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*" />
             <ColumnDefinition Width="30*" />
-            <ColumnDefinition Width="90*" />
+            <ColumnDefinition Width="15*" />
+            <ColumnDefinition Width="20*" />
+            <ColumnDefinition Width="30*" />
         </Grid.ColumnDefinitions>
-
-        <TextBlock Text="{Binding user.Nickname}" Grid.Column="1"
-                   HorizontalAlignment="Center" Grid.Row="3" FontSize="50"/>
 
         <TextBlock Text="{Binding Nickname}"
                    Grid.Column="1"

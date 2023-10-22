@@ -46,7 +46,8 @@ namespace CyberCrew
         private void UpdateTimer_Tick(object sender, EventArgs e)
         {
             CurrentTime.Text = DateTime.Now.ToString();
-            CurrentTimeShift.Text = DateTime.Now.Hour >= 20 && DateTime.Now.Hour < 8 ? "Ночная смена" : "Дневная смена";
+            
+            CurrentTimeShift.Text = DateTime.Now.Hour >= 20 || DateTime.Now.Hour < 8 ? "Ночная смена" : "Дневная смена";
         }
 
 

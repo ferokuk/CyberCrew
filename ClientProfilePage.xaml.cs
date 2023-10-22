@@ -33,9 +33,11 @@ namespace CyberCrew
             
             InitializeComponent();
             this.user = user;
-            
+            DataContext = user;
+            Plus100.Visibility = Visibility.Hidden;
+            Plus500.Visibility = Visibility.Hidden;
             GoBack.Visibility = Visibility.Hidden;
-            RegistrationDate.Text = "В CyberCrew с: " + user.RegisteredAt.ToLocalTime().ToString();
+            RegistrationDate.Text = "В CyberCrew с: " + user.RegisteredAt.ToString();
             if (user.IsEmailConfirmed)
             {
                 ConfirmEmail.Visibility = Visibility.Hidden;

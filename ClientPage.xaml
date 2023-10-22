@@ -106,10 +106,12 @@
         <TextBlock Grid.Row="0"
                    Grid.Column="0"
                    Foreground="#FFFF8A00"
-            FontFamily="Days One"
-            FontSize="40"
-            Name="CurrentTime"/>
-        <Frame Name="PageContent" Grid.Column="1" Grid.RowSpan="7"/>
+                   FontFamily="Days One"
+                   FontSize="40"
+                   Name="CurrentTime" />
+        <Frame Name="PageContent"
+               Grid.Column="1"
+               Grid.RowSpan="7" />
         <Button Style="{DynamicResource MenuButton}"
                 Content="Выйти"
                 FontSize="50"
