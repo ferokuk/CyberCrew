@@ -10,7 +10,7 @@
       Width="{x:Static SystemParameters.PrimaryScreenWidth}"
       Height="{x:Static SystemParameters.PrimaryScreenHeight}">
 
-    <Grid Cursor="">
+    <Grid>
 
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,1"
@@ -35,9 +35,9 @@
             <ColumnDefinition Width="90*" />
         </Grid.ColumnDefinitions>
 
-       
 
-       
+
+
         <TextBlock Foreground="#FFFF8A00"
                    FontFamily="Days One"
                    Name="Nickname"
@@ -86,7 +86,9 @@
                 Background="Transparent"
                 VerticalContentAlignment="Center"
                 HorizontalContentAlignment="Center"
-                Grid.Column="0" />
+                Grid.Column="0"
+                Name="BarBtn"
+                Click="BarBtn_Click" />
         <Button Style="{DynamicResource ConfirmButton}"
                 Grid.Row="5"
                 Content="Профиль"
@@ -94,20 +96,32 @@
                 Background="Transparent"
                 VerticalContentAlignment="Center"
                 HorizontalContentAlignment="Center"
-                Grid.Column="0" Name="Profile" Click="Profile_Click"/>
+                Grid.Column="0"
+                Name="ProfileBtn"
+                Click="ProfileBtn_Click" />
         <Border Grid.Row="0"
                 Grid.RowSpan="7"
                 BorderThickness="0,0,5,0"
-                BorderBrush="Black"
-                />
-        <TextBlock 
-            Grid.Row="0"
-            Grid.Column="0"
-           
+                BorderBrush="Black" />
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0"
                    Foreground="#FFFF8A00"
-            FontFamily="Days One"
-            FontSize="40"
-            Name="CurrentTime"/>
-        <Frame Name="PageContent" Grid.Column="1" Grid.RowSpan="7"/>
+                   FontFamily="Days One"
+                   FontSize="40"
+                   Name="CurrentTime" />
+        <Frame Name="PageContent"
+               Grid.Column="1"
+               Grid.RowSpan="7" />
+        <Button Style="{DynamicResource MenuButton}"
+                Content="Выйти"
+                FontSize="50"
+                Grid.Row="6"
+                VerticalAlignment="Bottom"
+                Margin="0 20"
+                Click="Logout_Click"
+                Name="Logout" />
+        <Frame Name="CurrentPageContent"
+               Grid.Column="1"
+               Grid.RowSpan="7" />
     </Grid>
 </Page>

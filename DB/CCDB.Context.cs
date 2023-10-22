@@ -30,8 +30,9 @@ namespace CyberCrew.DB
         public virtual DbSet<CPU> CPU { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<GPU> GPU { get; set; }
+        public virtual DbSet<IncomeSource> IncomeSource { get; set; }
         public virtual DbSet<Manufacturer> Manufacturer { get; set; }
-        public virtual DbSet<Money> Money { get; set; }
+        public virtual DbSet<MoneyIncome> MoneyIncome { get; set; }
         public virtual DbSet<Position> Position { get; set; }
         public virtual DbSet<Software> Software { get; set; }
         public virtual DbSet<Storage> Storage { get; set; }

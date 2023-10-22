@@ -53,6 +53,7 @@
                  Grid.Row="1"
                  Grid.RowSpan="7"
                  Grid.Column="0"
+                 Background="Transparent"
                  >
 
             <ListBox.ItemsPanel>

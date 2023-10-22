@@ -18,7 +18,7 @@
                  Background="White"
                  WindowTransitionsEnabled="False">
     <Grid>
-        <Frame Name="FrmMain" NavigationUIVisibility="Hidden"/>
-
+        <Frame Name="FrmMain" NavigationUIVisibility="Hidden" KeyDown="FrmMain_KeyDown"/>
+        
     </Grid>
 </mah:MetroWindow>
