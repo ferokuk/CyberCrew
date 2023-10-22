@@ -51,6 +51,7 @@
     <Property Name="Address" Type="nvarchar" MaxLength="150" />
     <Property Name="PhoneNumber" Type="nvarchar" MaxLength="18" Nullable="false" />
     <Property Name="INN" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="HashedPassword" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="GPU">
     <Key>
@@ -61,6 +62,13 @@
     <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="MemoryMB" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="IncomeSource">
+    <Key>
+      <PropertyRef Name="IncomeSourceId" />
+    </Key>
+    <Property Name="IncomeSourceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SourceName" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
   <EntityType Name="Manufacturer">
     <Key>
       <PropertyRef Name="ManufacturerId" />
@@ -68,14 +76,16 @@
     <Property Name="ManufacturerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="Money">
+  <EntityType Name="MoneyIncome">
     <Key>
-      <PropertyRef Name="Date" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Date" Type="date" Nullable="false" />
-    <Property Name="Money" Type="int" Nullable="false" />
-    <Property Name="DayEmployeeId" Type="int" Nullable="false" />
-    <Property Name="NightEmployeeId" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IncomeDateTime" Type="datetime" Nullable="false" />
+    <Property Name="IncomeSourceId" Type="int" Nullable="false" />
+    <Property Name="MoneyAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="ClientId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Position">
     <Key>
@@ -184,27 +194,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Money_Employee">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-    <End Role="Money" Type="Self.Money" Multiplicity="*" />
+  <Association Name="FK_MoneyIncome_IncomeSource">
+    <End Role="IncomeSource" Type="Self.IncomeSource" Multiplicity="1" />
+    <End Role="MoneyIncome" Type="Self.MoneyIncome" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="EmployeeId" />
+      <Principal Role="IncomeSource">
+        <PropertyRef Name="IncomeSourceId" />
       </Principal>
-      <Dependent Role="Money">
-        <PropertyRef Name="DayEmployeeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Money_Employee1">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-    <End Role="Money" Type="Self.Money" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employee">
-        <PropertyRef Name="EmployeeId" />
-      </Principal>
-      <Dependent Role="Money">
-        <PropertyRef Name="NightEmployeeId" />
+      <Dependent Role="MoneyIncome">
+        <PropertyRef Name="IncomeSourceId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -214,8 +212,9 @@
     <EntitySet Name="CPU" EntityType="Self.CPU" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GPU" EntityType="Self.GPU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IncomeSource" EntityType="Self.IncomeSource" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Money" EntityType="Self.Money" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MoneyIncome" EntityType="Self.MoneyIncome" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Software" EntityType="Self.Software" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Storage" EntityType="Self.Storage" Schema="dbo" store:Type="Tables" />
@@ -244,13 +243,9 @@
       <End Role="Manufacturer" EntitySet="Manufacturer" />
       <End Role="GPU" EntitySet="GPU" />
     </AssociationSet>
-    <AssociationSet Name="FK_Money_Employee" Association="Self.FK_Money_Employee">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Money" EntitySet="Money" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Money_Employee1" Association="Self.FK_Money_Employee1">
-      <End Role="Employee" EntitySet="Employee" />
-      <End Role="Money" EntitySet="Money" />
+    <AssociationSet Name="FK_MoneyIncome_IncomeSource" Association="Self.FK_MoneyIncome_IncomeSource">
+      <End Role="IncomeSource" EntitySet="IncomeSource" />
+      <End Role="MoneyIncome" EntitySet="MoneyIncome" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

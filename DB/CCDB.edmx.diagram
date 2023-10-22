@@ -5,25 +5,25 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="45572443fa02477ebd324be73ce951b4" Name="Diagram1">
-        <EntityTypeShape EntityType="CyberCrewModel.Client" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CyberCrewModel.Computer" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CyberCrewModel.CPU" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CyberCrewModel.Employee" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="CyberCrewModel.GPU" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CyberCrewModel.Manufacturer" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CyberCrewModel.Money" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CyberCrewModel.Position" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CyberCrewModel.Software" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CyberCrewModel.Storage" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CyberCrewModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
-        <AssociationConnector Association="CyberCrewModel.FK_Computer_CPU" ManuallyRouted="false" />
-        <AssociationConnector Association="CyberCrewModel.FK_Computer_GPU" ManuallyRouted="false" />
-        <AssociationConnector Association="CyberCrewModel.FK_Computer_Storage" ManuallyRouted="false" />
-        <AssociationConnector Association="CyberCrewModel.FK_CPU_Manufacturer" ManuallyRouted="false" />
-        <AssociationConnector Association="CyberCrewModel.FK_Employee_Position" ManuallyRouted="false" />
-        <AssociationConnector Association="CyberCrewModel.FK_Money_Employee" ManuallyRouted="false" />
-        <AssociationConnector Association="CyberCrewModel.FK_Money_Employee1" ManuallyRouted="false" />
-        <AssociationConnector Association="CyberCrewModel.FK_GPU_Manufacturer" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CyberCrewModel.Client" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="CyberCrewModel.Computer" Width="1.5" PointX="5.25" PointY="2.625" />
+        <EntityTypeShape EntityType="CyberCrewModel.CPU" Width="1.5" PointX="3" PointY="4.375" />
+        <EntityTypeShape EntityType="CyberCrewModel.Employee" Width="1.5" PointX="8" PointY="7" />
+        <EntityTypeShape EntityType="CyberCrewModel.GPU" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="CyberCrewModel.IncomeSource" Width="1.5" PointX="7.75" PointY="1.375" />
+        <EntityTypeShape EntityType="CyberCrewModel.Manufacturer" Width="1.5" PointX="0.75" PointY="3.125" />
+        <EntityTypeShape EntityType="CyberCrewModel.MoneyIncome" Width="1.5" PointX="10" PointY="1" />
+        <EntityTypeShape EntityType="CyberCrewModel.Position" Width="1.5" PointX="5.75" PointY="8" />
+        <EntityTypeShape EntityType="CyberCrewModel.Software" Width="1.5" PointX="10.75" PointY="8.75" />
+        <EntityTypeShape EntityType="CyberCrewModel.Storage" Width="1.5" PointX="3" PointY="9.25" />
+        <EntityTypeShape EntityType="CyberCrewModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="11.75" />
+        <AssociationConnector Association="CyberCrewModel.FK_Computer_CPU" />
+        <AssociationConnector Association="CyberCrewModel.FK_Computer_GPU" />
+        <AssociationConnector Association="CyberCrewModel.FK_Computer_Storage" />
+        <AssociationConnector Association="CyberCrewModel.FK_CPU_Manufacturer" />
+        <AssociationConnector Association="CyberCrewModel.FK_Employee_Position" />
+        <AssociationConnector Association="CyberCrewModel.FK_GPU_Manufacturer" />
+        <AssociationConnector Association="CyberCrewModel.FK_MoneyIncome_IncomeSource" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

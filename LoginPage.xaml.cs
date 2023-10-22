@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace CyberCrew
 {
@@ -31,6 +32,7 @@ namespace CyberCrew
             Password.Password = "";
         }
 
+
         private void Registration_Click(object sender, RoutedEventArgs e)
         {
             AppFrame.frameMain.Navigate(new RegistrationPage());
@@ -38,7 +40,7 @@ namespace CyberCrew
 
         private void Login_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var regex = new Regex("^[a-zA-Z]\\w*$");
+            var regex = new Regex("^[a-zA-Z0-9]\\w*$");
             if (!regex.IsMatch(Login.Text))
             {
                 LoginBtn.IsEnabled = false;
@@ -77,9 +79,19 @@ namespace CyberCrew
             var user = DBConnection.modelOdb.Client.FirstOrDefault(x => x.Nickname == login && x.HashedPassword == passw);
             if (user == null)
             {
-                LoginInfo.Text = "Неправильный логин или пароль.";
-                LoginInfo.Foreground = Brushes.Red;
-                return;
+                var employee = DBConnection.modelOdb.Employee.FirstOrDefault(x => x.EmployeeId.ToString() == login && x.HashedPassword == passw);
+                if (employee != null)
+                {
+                    AppFrame.frameMain.Navigate(new EmployeePage(employee));
+                    return;
+                }
+                else
+                {
+                    LoginInfo.Text = "Неправильный логин или пароль.";
+                    LoginInfo.Foreground = Brushes.Red;
+                    return;
+
+                }
             }
             AppFrame.frameMain.Navigate(new ClientPage(user));
         }

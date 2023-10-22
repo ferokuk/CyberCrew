@@ -12,14 +12,15 @@ namespace CyberCrew.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class Money
+    public partial class MoneyIncome
     {
-        public System.DateTime Date { get; set; }
-        public int Money1 { get; set; }
-        public int DayEmployeeId { get; set; }
-        public int NightEmployeeId { get; set; }
+        public int Id { get; set; }
+        public System.DateTime IncomeDateTime { get; set; }
+        public int IncomeSourceId { get; set; }
+        public decimal MoneyAmount { get; set; }
+        public int EmployeeId { get; set; }
+        public int ClientId { get; set; }
     
-        public virtual Employee Employee { get; set; }
-        public virtual Employee Employee1 { get; set; }
+        public virtual IncomeSource IncomeSource { get; set; }
     }
 }

@@ -10,6 +10,7 @@
       Height="{x:Static SystemParameters.PrimaryScreenHeight}">
 
     <Grid>
+        
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,1"
                                  EndPoint="0,0">

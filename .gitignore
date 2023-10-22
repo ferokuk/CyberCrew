@@ -9,7 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-
+Resources\config.json
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -588,3 +588,4 @@ git_stats/*
 StyleCop.Cache
 bin
 obj
+Resources/*.json

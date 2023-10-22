@@ -36,7 +36,7 @@ namespace CyberCrew
 
             DispatcherTimer balance = new DispatcherTimer();
             balance.Tick += new EventHandler(UpdateBalance_Tick);
-            balance.Interval = new TimeSpan(0, 1, 0);
+            balance.Interval = new TimeSpan(0, 0, 1);
             balance.Start();
             Nickname.Text = user.Nickname;
             Balance.Text = user.Balance.ToString() + "₽";
@@ -56,19 +56,23 @@ namespace CyberCrew
         }
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
+            AppsManager.KillRunningApps();
+            AppsManager.User = null;
             AppFrame.frameMain.Navigate(new LoginPage());
         }
 
        
 
-        private void Profile_Click(object sender, RoutedEventArgs e)
+        private void ProfileBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(currBtn == Profile) { return; }
-            Profile.Background = (Brush)new BrushConverter().ConvertFrom("#FFFF8A00");
+            if(currBtn == ProfileBtn) { return; }
+            ProfileBtn.Background = (Brush)new BrushConverter().ConvertFrom("#FFFF8A00");
             currBtn.Background = Brushes.Transparent;
             currBtn = Profile;
             PageContent.Navigate(new ClientProfilePage(User));
             //AppFrame.frameMain.Navigate(new ClientProfilePage(User));
+            currBtn = ProfileBtn;
+            CurrentPageContent.Navigate(new ClientProfilePage(User));
         }
 
         private void AppsBtn_Click(object sender, RoutedEventArgs e)
@@ -79,5 +83,15 @@ namespace CyberCrew
             currBtn = AppsBtn;
             PageContent.Navigate(new ClientAppsPage(User));
         }
+
+        private void BarBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (currBtn == BarBtn) { return; }
+            BarBtn.Background = (Brush)new BrushConverter().ConvertFrom("#FFFF8A00");
+            currBtn.Background = Brushes.Transparent;
+            currBtn = BarBtn;
+            CurrentPageContent.Navigate(new BarPage());
+        }
+        
     }
 }
