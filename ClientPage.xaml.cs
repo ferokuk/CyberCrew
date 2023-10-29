@@ -19,11 +19,11 @@ namespace CyberCrew
     /// <summary>
     /// Логика взаимодействия для ClientPage.xaml
     /// </summary>
-    
+
     public partial class ClientPage : Page
     {
         DB.Client User;
-        
+
         Button currBtn;
         public ClientPage(DB.Client user)
         {
@@ -42,12 +42,12 @@ namespace CyberCrew
             Balance.Text = user.Balance.ToString() + "₽";
             currBtn = AppsBtn;
             PageContent.Navigate(new ClientAppsPage(user));
-           
+
         }
         private void UpdateTimer_Tick(object sender, EventArgs e)
         {
             CurrentTime.Text = DateTime.Now.ToString();
-            
+
         }
         private void UpdateBalance_Tick(object sender, EventArgs e)
         {
@@ -56,16 +56,20 @@ namespace CyberCrew
         }
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            AppsManager.KillRunningApps();
-            AppsManager.User = null;
-            AppFrame.frameMain.Navigate(new LoginPage());
+            if (new DialogWindow("Вы действительно хотите выйти?").ShowDialog() == true)
+            {
+                AppsManager.KillRunningApps();
+                AppsManager.User = null;
+                AppFrame.frameMain.Navigate(new LoginPage());
+
+            }
         }
 
-       
+
 
         private void ProfileBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(currBtn == ProfileBtn) { return; }
+            if (currBtn == ProfileBtn) { return; }
             ProfileBtn.Background = (Brush)new BrushConverter().ConvertFrom("#FFFF8A00");
             currBtn.Background = Brushes.Transparent;
             currBtn = ProfileBtn;
@@ -89,6 +93,6 @@ namespace CyberCrew
             currBtn = BarBtn;
             CurrentPageContent.Navigate(new BarPage());
         }
-        
+
     }
 }

@@ -21,6 +21,8 @@ namespace CyberCrew.DB
         public int EmployeeId { get; set; }
         public int ClientId { get; set; }
     
+        public virtual Client Client { get; set; }
+        public virtual Employee Employee { get; set; }
         public virtual IncomeSource IncomeSource { get; set; }
     }
 }

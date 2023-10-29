@@ -54,7 +54,6 @@ namespace CyberCrew
         DB.Client User;
 
 
-        private string DirPath = "A:\\Clones\\CyberCrew\\CyberCrew";
         public ClientAppsPage(DB.Client User)
         {
             InitializeComponent();
@@ -69,34 +68,7 @@ namespace CyberCrew
         private void ContentControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var app = Apps.SelectedItem as DB.Software;
-            AppsManager.runningApps.Add(app.ApplicationName.ToLower());
-            if (AppsManager.timer.IsEnabled)
-            {
-                try
-                {
-                    Process.Start(DirPath + app.PathToExe);
-
-                }
-                catch
-                {
-                    MessageBox.Show("Отсутствует исполняемый файл");
-                }
-                return;
-            }
-
-
-            try
-            {
-                Process.Start(DirPath + app.PathToExe);
-
-                AppsManager.timer.Start();
-
-            }
-            catch
-            {
-                //timer.Stop();
-                MessageBox.Show("Отсутствует исполняемый файл");
-            }
+            AppsManager.RunApp(app.ApplicationName, app.PathToExe);
         }
     }
 }

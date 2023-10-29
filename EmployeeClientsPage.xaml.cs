@@ -35,10 +35,7 @@ namespace CyberCrew
             ObColl = DBConnection.modelOdb.Client.Local;
             ClientsGrid.Loaded += (sender, e) =>
             {
-                // Скройте столбцы с индексами 0, 2, 4
-                ClientsGrid.Columns[0].Visibility = Visibility.Hidden;
-                ClientsGrid.Columns[2].Visibility = Visibility.Hidden;
-                ClientsGrid.Columns[4].Visibility = Visibility.Hidden;
+                HideColumns();
             };
 
         }
@@ -57,6 +54,7 @@ namespace CyberCrew
         private void ClientsGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var client = ClientsGrid.SelectedItem as DB.Client;
+            if(client == null) { return; }
             ClientProfileContent.Navigate(new ClientProfilePage(client, employee, ClientProfileContent));
         }
        
@@ -68,9 +66,15 @@ namespace CyberCrew
 
             ICollectionView Itemlist = _itemSourceList.View ;
             ClientsGrid.ItemsSource = Itemlist;
+            HideColumns();
+        }
+        
+        private void HideColumns()
+        {
             ClientsGrid.Columns[0].Visibility = Visibility.Hidden;
             ClientsGrid.Columns[2].Visibility = Visibility.Hidden;
             ClientsGrid.Columns[4].Visibility = Visibility.Hidden;
+            ClientsGrid.Columns[7].Visibility = Visibility.Hidden;
         }
     }
 }

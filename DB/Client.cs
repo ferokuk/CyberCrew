@@ -14,6 +14,12 @@ namespace CyberCrew.DB
     
     public partial class Client
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Client()
+        {
+            this.MoneyIncome = new HashSet<MoneyIncome>();
+        }
+    
         public int ClientId { get; set; }
         public string Nickname { get; set; }
         public string HashedPassword { get; set; }
@@ -21,5 +27,9 @@ namespace CyberCrew.DB
         public bool IsEmailConfirmed { get; set; }
         public System.DateTime RegisteredAt { get; set; }
         public decimal Balance { get; set; }
+        public string EmailMessageCode { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MoneyIncome> MoneyIncome { get; set; }
     }
 }

@@ -36,6 +36,7 @@ namespace CyberCrew
             LoginBtn.IsEnabled = false;
             Login.Text = config.Login;
             Password.Password = config.Password;
+            
         }
 
 

@@ -40,7 +40,7 @@ namespace CyberCrew
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
             CurrentPageContent.Navigate(new EmployeeClientsPage(employee));
-            Name.Text = ShortName.ShortenName(employee);
+            EmployeeName.Text = ShortName.ShortenName(employee);
             Position.Text = employee.Position.Name.ToUpper();
         }
         private void UpdateTimer_Tick(object sender, EventArgs e)
@@ -70,6 +70,7 @@ namespace CyberCrew
         private void EmployeesBtn_Click(object sender, RoutedEventArgs e)
         {
             if (currBtn == EmployeesBtn) { return; }
+            if(new InputWindow("Введите пароль для перехода: ", employee.HashedPassword).ShowDialog() != true) { return; }
             EmployeesBtn.Background = (Brush)new BrushConverter().ConvertFrom("#FFFF8A00");
             currBtn.Background = Brushes.Transparent;
             currBtn = EmployeesBtn;
@@ -87,7 +88,8 @@ namespace CyberCrew
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            AppFrame.frameMain.Navigate(new LoginPage());
+            if(new DialogWindow("Вы действительно хотите выйти?").ShowDialog() == true)
+                AppFrame.frameMain.Navigate(new LoginPage());
         }
 
         private void CashBtn_Click(object sender, RoutedEventArgs e)
