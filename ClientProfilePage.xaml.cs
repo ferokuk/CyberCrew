@@ -30,7 +30,7 @@ namespace CyberCrew
         string code;
         public ClientProfilePage(DB.Client user)
         {
-            
+
             InitializeComponent();
             this.user = user;
             DataContext = user;
@@ -46,15 +46,23 @@ namespace CyberCrew
             }
             else
             {
+                if(!String.IsNullOrEmpty(user.EmailMessageCode))
+                {
+                    Code.Visibility = Visibility.Visible;
+                    CodeMessage.Visibility = Visibility.Visible;
+                    ConfirmCode.Visibility = Visibility.Visible;
+                    ConfirmEmail.Content = "Отправить код ещё раз";
+                }
                 IsEmailConfirmed.Text = "не подтверждён";
                 IsEmailConfirmed.Foreground = Brushes.Red;
             }
+            
         }
         // Для просмотра сотрудником
         public ClientProfilePage(DB.Client user, DB.Employee employee, Frame prevPageFrame)
         {
 
-       
+
             InitializeComponent();
             this.DataContext = user;
             this.user = user;
@@ -94,6 +102,9 @@ namespace CyberCrew
             ConfirmCode.Visibility = Visibility.Visible;
             ConfirmEmail.Content = "Отправить код ещё раз";
             code = GenerateCode(6);
+            user.EmailMessageCode = Hash.HashPassword(code);
+            DBConnection.modelOdb.Client.AddOrUpdate(user);
+            DBConnection.modelOdb.SaveChanges();
             SendCodeToEmail(code);
         }
         private void SendCodeToEmail(string code)
@@ -139,10 +150,9 @@ namespace CyberCrew
             {
                 smtp.Send(mail);
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Произошла ошибка!" + ex);
-                return;
+                new MessageWindow("Произошла ошибка, повторите попытку позже.").ShowDialog();
             }
         }
         private string GenerateCode(int length)
@@ -168,7 +178,7 @@ namespace CyberCrew
 
         private async void ConfirmCode_Click(object sender, RoutedEventArgs e)
         {
-            if (Code.Text != code)
+            if (Hash.HashPassword(Code.Text) != user.EmailMessageCode)
             {
                 CodeEnterInfo.Text = "неверный код";
                 CodeEnterInfo.Foreground = Brushes.Red;
@@ -177,8 +187,7 @@ namespace CyberCrew
             user.IsEmailConfirmed = true;
             DBConnection.modelOdb.Client.AddOrUpdate(user);
             DBConnection.modelOdb.SaveChanges();
-            CodeEnterInfo.Text = "успешно";
-            CodeEnterInfo.Foreground = Brushes.Green;
+            new MessageWindow("Вы успешно подтвердили почту").ShowDialog();
             await Task.Delay(2000);
             CodeEnterInfo.Visibility = Visibility.Hidden;
             Code.Visibility = Visibility.Hidden;
@@ -223,6 +232,7 @@ namespace CyberCrew
                 DBConnection.modelOdb.MoneyIncome.AddOrUpdate(moneyIncome);
                 DBConnection.modelOdb.Client.AddOrUpdate(user);
                 DBConnection.modelOdb.SaveChanges();
+                prevPageFrame.Navigate(new EmployeeClientsPage(employee));
 
             }
             catch (Exception ex)

@@ -166,6 +166,12 @@ namespace CyberCrew
             };
             try
             {
+                if(DBConnection.modelOdb.Client.FirstOrDefault(x => x.Nickname == newClient.Nickname) != null)
+                {
+                    RegisterMessage.Text = badEmoji + "данный логин уже занят.";
+                    RegisterMessage.Foreground = Brushes.Red;
+                    return;
+                }
                 DBConnection.modelOdb.Client.Add(newClient);
                 DBConnection.modelOdb.SaveChanges();
                 RegisterMessage.Text = "Вы успешно зарегистрировались!\n Переход на страницу входа...";
@@ -189,9 +195,13 @@ namespace CyberCrew
         {
             var email = Email.Text.Trim();
             var login = Login.Text.Trim();
-            var pass = Password.Password;
-            var passRepeat = RepeatPassword.Password;
-            return email != "" && login != "" && pass != "" && passRepeat != "" && pass == passRepeat && !AllEmails.Contains(email) && !AllLogins.Contains(login);
+            var pass = Password.Password.Trim();
+            var passRepeat = RepeatPassword.Password.Trim();
+            return new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$").IsMatch(email) && // valid email
+                 new Regex("^[a-zA-Z]\\w*$").IsMatch(login) && // valid login
+                 new Regex("^(?=.*[a-zA-Z])(?=.*[0-9])(?!.*\\s)[a-zA-Z0-9#$@!%&*?]{8,}$").IsMatch(pass) && // valid password
+                 pass == passRepeat && 
+                 !AllEmails.Contains(email) && !AllLogins.Contains(login);
         }
     }
 }

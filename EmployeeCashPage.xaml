@@ -50,17 +50,7 @@
                   CanUserDeleteRows="False"
                   IsReadOnly="True"
                   VerticalScrollBarVisibility="Disabled" />
-        <!--<TextBlock Foreground="#FFFF8A00"
-                   FontFamily="Days One"
-                   Name="Hint"
-                   FontSize="50"
-                   HorizontalAlignment="Center"
-                   Text="Поиск по дате"
-                   TextWrapping="NoWrap"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="2"
-                   Grid.Row="1"
-                   VerticalAlignment="Center" />-->
+        
         <TextBlock Foreground="#FFFF8A00"
                    FontFamily="Days One"
                    Name="Total"

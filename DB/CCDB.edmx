@@ -8,7 +8,6 @@
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="ClientId" />
-            <PropertyRef Name="Nickname" />
           </Key>
           <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nickname" Type="nvarchar" MaxLength="20" Nullable="false" />
@@ -17,6 +16,7 @@
           <Property Name="IsEmailConfirmed" Type="bit" Nullable="false" />
           <Property Name="RegisteredAt" Type="datetime" Nullable="false" />
           <Property Name="Balance" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="EmailMessageCode" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Computer">
           <Key>
@@ -53,7 +53,6 @@
           <Property Name="EmploymentDate" Type="date" Nullable="false" />
           <Property Name="DateOfBirth" Type="date" Nullable="false" />
           <Property Name="PositionId" Type="int" Nullable="false" />
-          <Property Name="Address" Type="nvarchar" MaxLength="150" />
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="18" Nullable="false" />
           <Property Name="INN" Type="varchar" MaxLength="12" Nullable="false" />
           <Property Name="HashedPassword" Type="nvarchar" MaxLength="50" />
@@ -199,6 +198,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MoneyIncome_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="MoneyIncome" Type="Self.MoneyIncome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="MoneyIncome">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MoneyIncome_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="MoneyIncome" Type="Self.MoneyIncome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="MoneyIncome">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MoneyIncome_IncomeSource">
           <End Role="IncomeSource" Type="Self.IncomeSource" Multiplicity="1" />
           <End Role="MoneyIncome" Type="Self.MoneyIncome" Multiplicity="*" />
@@ -248,6 +271,14 @@
             <End Role="Manufacturer" EntitySet="Manufacturer" />
             <End Role="GPU" EntitySet="GPU" />
           </AssociationSet>
+          <AssociationSet Name="FK_MoneyIncome_Client" Association="Self.FK_MoneyIncome_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="MoneyIncome" EntitySet="MoneyIncome" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MoneyIncome_Employee" Association="Self.FK_MoneyIncome_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="MoneyIncome" EntitySet="MoneyIncome" />
+          </AssociationSet>
           <AssociationSet Name="FK_MoneyIncome_IncomeSource" Association="Self.FK_MoneyIncome_IncomeSource">
             <End Role="IncomeSource" EntitySet="IncomeSource" />
             <End Role="MoneyIncome" EntitySet="MoneyIncome" />
@@ -270,6 +301,10 @@
           <EntitySet Name="Software" EntityType="CyberCrewModel.Software" />
           <EntitySet Name="Storage" EntityType="CyberCrewModel.Storage" />
           <EntitySet Name="sysdiagrams" EntityType="CyberCrewModel.sysdiagrams" />
+          <AssociationSet Name="FK_MoneyIncome_Client" Association="CyberCrewModel.FK_MoneyIncome_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="MoneyIncome" EntitySet="MoneyIncome" />
+          </AssociationSet>
           <AssociationSet Name="FK_Computer_CPU" Association="CyberCrewModel.FK_Computer_CPU">
             <End Role="CPU" EntitySet="CPU" />
             <End Role="Computer" EntitySet="Computer" />
@@ -290,6 +325,10 @@
             <End Role="Position" EntitySet="Position" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
+          <AssociationSet Name="FK_MoneyIncome_Employee" Association="CyberCrewModel.FK_MoneyIncome_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="MoneyIncome" EntitySet="MoneyIncome" />
+          </AssociationSet>
           <AssociationSet Name="FK_GPU_Manufacturer" Association="CyberCrewModel.FK_GPU_Manufacturer">
             <End Role="Manufacturer" EntitySet="Manufacturer" />
             <End Role="GPU" EntitySet="GPU" />
@@ -302,7 +341,6 @@
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="ClientId" />
-            <PropertyRef Name="Nickname" />
           </Key>
           <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nickname" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
@@ -311,6 +349,8 @@
           <Property Name="IsEmailConfirmed" Type="Boolean" Nullable="false" />
           <Property Name="RegisteredAt" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Balance" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="EmailMessageCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MoneyIncome" Relationship="CyberCrewModel.FK_MoneyIncome_Client" FromRole="Client" ToRole="MoneyIncome" />
         </EntityType>
         <EntityType Name="Computer">
           <Key>
@@ -352,11 +392,11 @@
           <Property Name="EmploymentDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PositionId" Type="Int32" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="true" />
           <Property Name="INN" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="HashedPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Position" Relationship="CyberCrewModel.FK_Employee_Position" FromRole="Employee" ToRole="Position" />
+          <NavigationProperty Name="MoneyIncome" Relationship="CyberCrewModel.FK_MoneyIncome_Employee" FromRole="Employee" ToRole="MoneyIncome" />
         </EntityType>
         <EntityType Name="GPU">
           <Key>
@@ -396,6 +436,8 @@
           <Property Name="MoneyAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="EmployeeId" Type="Int32" Nullable="false" />
           <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="CyberCrewModel.FK_MoneyIncome_Client" FromRole="MoneyIncome" ToRole="Client" />
+          <NavigationProperty Name="Employee" Relationship="CyberCrewModel.FK_MoneyIncome_Employee" FromRole="MoneyIncome" ToRole="Employee" />
           <NavigationProperty Name="IncomeSource" Relationship="CyberCrewModel.FK_MoneyIncome_IncomeSource" FromRole="MoneyIncome" ToRole="IncomeSource" />
         </EntityType>
         <EntityType Name="Position">
@@ -435,6 +477,18 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <Association Name="FK_MoneyIncome_Client">
+          <End Type="CyberCrewModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="CyberCrewModel.MoneyIncome" Role="MoneyIncome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="MoneyIncome">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Computer_CPU">
           <End Type="CyberCrewModel.CPU" Role="CPU" Multiplicity="1" />
           <End Type="CyberCrewModel.Computer" Role="Computer" Multiplicity="*" />
@@ -495,6 +549,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MoneyIncome_Employee">
+          <End Type="CyberCrewModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="CyberCrewModel.MoneyIncome" Role="MoneyIncome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeId" />
+            </Principal>
+            <Dependent Role="MoneyIncome">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_GPU_Manufacturer">
           <End Type="CyberCrewModel.Manufacturer" Role="Manufacturer" Multiplicity="1" />
           <End Type="CyberCrewModel.GPU" Role="GPU" Multiplicity="*" />
@@ -528,6 +594,7 @@
           <EntitySetMapping Name="Client">
             <EntityTypeMapping TypeName="CyberCrewModel.Client">
               <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="EmailMessageCode" ColumnName="EmailMessageCode" />
                 <ScalarProperty Name="Balance" ColumnName="Balance" />
                 <ScalarProperty Name="RegisteredAt" ColumnName="RegisteredAt" />
                 <ScalarProperty Name="IsEmailConfirmed" ColumnName="IsEmailConfirmed" />
@@ -568,7 +635,6 @@
                 <ScalarProperty Name="HashedPassword" ColumnName="HashedPassword" />
                 <ScalarProperty Name="INN" ColumnName="INN" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="PositionId" ColumnName="PositionId" />
                 <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
                 <ScalarProperty Name="EmploymentDate" ColumnName="EmploymentDate" />

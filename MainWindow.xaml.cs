@@ -30,6 +30,7 @@ namespace CyberCrew
     {
         public static Frame frameMain;
     }
+
     public static class Hash
     {
         public static string HashPassword(string password)
@@ -56,11 +57,11 @@ namespace CyberCrew
             return res;
         }
     }
+
     class DBConnection
     {
         public static DB.CyberCrewEntities modelOdb;
     }
-
 
     public class Config
     {
@@ -78,6 +79,8 @@ namespace CyberCrew
     public class AppsManager
     {
         public static DB.Client User;
+        private static string DirPath = "A:\\Clones\\CyberCrew\\CyberCrew";
+        //private static string DirPath = "C:\\Projects\\CyberCrew";
         public static DispatcherTimer timer = new DispatcherTimer();
         public static List<string> runningApps;
         public static void KillRunningApps()
@@ -93,24 +96,32 @@ namespace CyberCrew
                     }
                     catch
                     {
-                        MessageBox.Show($"error killing {app}-{process}");
+                        
                     }
                 }
 
             }
+            timer.Stop();
             runningApps.Clear();
         }
         private static void CheckProcesses()
         {
             var localProcesses = Process.GetProcesses().Select(x => x.ProcessName.ToLower()).ToHashSet();
+
             List<string> currentApps = runningApps.ToList();
             foreach (string app in currentApps)
             {
+
+
                 if (!localProcesses.Contains(app))
                 {
                     runningApps.Remove(app);
                 }
 
+            }
+            if (runningApps.Count == 0)
+            {
+                timer.Stop();
             }
 
 
@@ -118,6 +129,7 @@ namespace CyberCrew
         public static void ReduceUserBalance_Tick(object sender, EventArgs e)
         {
             CheckProcesses();
+
             if (runningApps.Count == 0 || User.Balance == 0)
             {
                 timer.Stop();
@@ -128,7 +140,7 @@ namespace CyberCrew
                 User.Balance = 0;
                 DBConnection.modelOdb.Client.AddOrUpdate(User);
                 DBConnection.modelOdb.SaveChanges();
-                timer.Stop();
+
                 KillRunningApps();
                 return;
             }
@@ -147,7 +159,33 @@ namespace CyberCrew
             }
 
         }
+        public static void RunApp(string appName, string pathToExe)
+        {
+            if (User.Balance <= 1)
+            {
+                new MessageWindow("Недостатно средств на балансе.").ShowDialog();
+                return;
+            }
+            try
+            {
+
+                Process.Start(DirPath + pathToExe);
+                if (!timer.IsEnabled)
+                {
+                    timer.Start();
+                }
+                runningApps.Add(appName.ToLower());
+
+            }
+            catch
+            {
+                new MessageWindow("Отсутствует исполняемый файл.").ShowDialog();
+
+            }
+
+        }
     }
+
     public partial class MainWindow
     {
 
